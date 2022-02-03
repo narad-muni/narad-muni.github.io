@@ -4,17 +4,21 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="autoRender" content="true">
     <title>सुदंर CSS | iphone</title>
-    <script src="./lessCompiler.js" ></script>
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Assistant:wght@200;300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
-
     </style>
 </head>
 <body sunder="bg_#bdd9f5 m_0 p_0 font-family_'Assistant',`sans-serif ov_hidden">
-    <div id="main" sunder="dis_flex w_fit-content mx_auto position_relative top_-100vh trndu_2s a_&float_$_2rem`5s`ease`infinite">
+    <div id="loader">
+        <div sunder="position_absolute h_100% w_100% bg_#d65076 z_5 dis_grid pli_center">
+            <p sunder="c_white ftw_900 ftsz_3rem">Loading Awesomeness ...</p>
+        </div>
+    </div>
+    <div id="main" sunder="dis_flex w_fit-content mx_auto position_relative top_-100vh trndu_2s a_&float_2rem_5rem`5s`ease`infinite">
         <div sunder="position_relative dis_flex fd_column w_.2rem h_fit-content top_2rem">
             <div sunder="position_relative w_100% mt_1rem h_2rem bg_#fad7bd bsh_0`0`1px`grey z_2 top_5rem"></div>
             <div sunder="position_relative w_100% mt_1rem h_3rem bg_#fad7bd bsh_0`0`1px`grey z_2 top_5rem"></div>
@@ -22,7 +26,7 @@
         </div>
         <div sunder="w_350px position_relative h_712px bg_black mx_5px my_5% brad_60px bsh_0`0`20px ov_hidden border_10px`solid`black out_3px`solid`#fad7bd">
 
-            <img src="./background.jpg" sunder="$filter $bright_80 position_absolute h_100% w_100%">
+            <img src="./background.jpg" sunder="$filter $bright_110 position_absolute h_100% w_100%">
             <div sunder="position_absolute top_0 left_0 right_0">
                 <div sunder="h_30px brad_0`0`20px`20px w_140px bg_black mx_auto">
                     <div sunder="position_relative top_50% bg_rgb(white,10%) h_.3rem w_30% mx_auto"></div>
@@ -117,17 +121,19 @@
     </div>
 
     <script src="./avyav.js"></script>
-    <script src="./vinyas.js"></script>
-    <script src="./sundar.js"></script>
+    <script src="./sundar.min.js"></script>
     <script>
+        run(document.querySelector("body"));
+        run(document.getElementById("loader").getElementsByTagName("*"));
         window.onload = function(){
             setTimeout(function(){
+                run();
+                document.getElementById("loader").children[0].setAttribute("sunder","position_absolute h_100% trndu_1s w_100% z_0 dis_grid pli_center $filter $opacity_0");
                 var sunder = document.getElementById("main").getAttribute("sunder").split(" ");
-                sunder.push("top_3vw");
                 sunder.splice(sunder.indexOf("top_-100vh"),1);
                 document.getElementById("main").setAttribute("sunder",sunder.join(" "));
             }
-            ,200);
+            ,500);
         };
     </script>
 
