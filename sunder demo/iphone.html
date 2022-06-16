@@ -125,7 +125,7 @@
     <script>
         run(document.querySelector("body"));
         run(document.getElementById("loader").getElementsByTagName("*"));
-        window.onload = function(){
+        document.addEventListener('DOMContentLoaded', function(){
             setTimeout(function(){
                 run();
                 document.getElementById("loader").children[0].setAttribute("sunder","position_absolute h_100% trndu_1s w_100% z_0 dis_grid pli_center $filter $opacity_0");
@@ -134,7 +134,7 @@
                 document.getElementById("main").setAttribute("sunder",sunder.join(" "));
             }
             ,500);
-        };
+        });
     </script>
 
 
