@@ -44,7 +44,18 @@ function generateAnimation(sunder){
     return returnName;
 }
 
+cmemo = {}
+
 function generateComponent(sunder){
+
+    memo = memo || {}
+
+    if(memo[sunder]) {
+        return memo[sunder]
+    }
+
+    ogs = sunder
+
     cName = sunder.split("_");
     args = cName;
     cName = cName[0];
@@ -68,22 +79,41 @@ function generateComponent(sunder){
         }
     }
 
-    return cName;
+    return cmemo[ogs] = cName;
 
 }
 
 function addSunder(sunder){
-    less.render(sunder, function (e, output) {
-        if(e){
-            // console.log(sunder);
-        }else if(!document.getElementsByTagName("style")[0].innerHTML.includes(output.css)){
-            completeSunder += output.css;
+    // less.render(sunder, function (e, output) {
+    //     if(e){
+    //         console.log(e,sunder);
+    //     }else if(!document.getElementsByTagName("style")[0].innerHTML.includes(output.css)){
+    //         completeSunder += output.css;
+    //     }
+    // });
+    s = sunder.split("\n")
+    s.forEach(function (item, index) {
+        if(item.includes("{&")){
+            x = item.substring(0,item.search("]")+1)
+            item = item.slice(item.search("{&")+1,-1)
+            item = item.replace("&",x)
         }
+        completeSunder += item
     });
 }
 
+memo = {}
+
 function generateSunder(sunder){
+
+    memo = memo || {}
+
+    if(memo[sunder]) {
+        return memo[sunder]
+    }
+
     if(sunder.startsWith("(")){
+        ogs = sunder;
         outSunder = "";
         breakPoint = sunder.substring(1,sunder.indexOf(")"));
         if(breakPoint == "p"){
@@ -105,9 +135,10 @@ function generateSunder(sunder){
             outSunder += generateSunder(sunder[i]);
         }
         outSunder += "}";
-        return outSunder;
+        return memo[ogs] = outSunder;
     }
     else if(sunder.startsWith(":^")){
+        ogs = sunder;
         outSunder = "";
         sunder = sunder.substring(2);
         sunder = sunder.split(":");
@@ -118,8 +149,9 @@ function generateSunder(sunder){
             outSunder += generateSunder(sunder[i]);
         }
         outSunder += "}";
-        return outSunder;
+        return memo[ogs] = outSunder;
     }else if(sunder.startsWith("::")){
+        ogs = sunder;
         outSunder = "&:";
         sunder = sunder.split(":");
         sunder.shift();
@@ -131,8 +163,9 @@ function generateSunder(sunder){
             outSunder += generateSunder(sunder[i]);
         }
         outSunder += "}";
-        return outSunder;
+        return memo[ogs] = outSunder;
     }else if(sunder.startsWith(":")){
+        ogs = sunder;
         outSunder = "&:";
         sunder = sunder.split(":");
         sunder.shift();
@@ -147,26 +180,28 @@ function generateSunder(sunder){
             outSunder += generateSunder(sunder[i]);
         }
         outSunder += "}";
-        return outSunder;
+        return memo[ogs] = outSunder;
     }else if(sunder.startsWith("$")){
-        return generateComponent(sunder);
+        ogs = sunder;
+        return memo[ogs] = generateComponent(sunder);
     }else if(sunder.includes("_")){
+        ogs = sunder;
         property = sunder.substring(0,sunder.indexOf("_")+1);
         value = sunder.substring(property.length);
         if(SunderUtility[property]){
             if(value.startsWith("&")){
-                return SunderUtility[property]+generateAnimation(value).replaceAll("`"," ")+";";
+                return memo[ogs] = SunderUtility[property]+generateAnimation(value).replaceAll("`"," ")+";";
             }else{
-                return SunderUtility[property]+value.replaceAll("`"," ")+";";
+                return memo[ogs] = SunderUtility[property]+value.replaceAll("`"," ")+";";
             }
         }else{
-            return property.slice(0,-1)+":"+value.replaceAll("`"," ")+";";
+            return memo[ogs] = property.slice(0,-1)+":"+value.replaceAll("`"," ")+";";
         }
     }
 }
 
 function parseSunder(sunder){
-    outSunder = "[sunder~=\""+sunder.replaceAll(/[-[\]\`{\!}%():;*+?.,\\^$|#\s]/g, '\\$&')+"\"]{\n";
+    outSunder = "\n[sunder~=\""+sunder.replaceAll(/[-[\]\`{\!}%():;*+?.,\\^$|#\s]/g, '\\$&')+"\"]{";
     outSunder += generateSunder(sunder);
     outSunder += "}";
     addSunder(outSunder);
