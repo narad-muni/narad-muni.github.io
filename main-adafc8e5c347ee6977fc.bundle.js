@@ -9381,7 +9381,7 @@
                 }
                 nextDifficultyLevel() {
                     if (!this._gameOver) {
-                        this._baseGravity += 50,
+                        // this._baseGravity += 50,
                         this._maxSpawnDelay = Math.max(this._maxSpawnDelay - 100, this._minSpawnDelay);
                         var e = this.scene.registry.has("difficultySetting") ? this.scene.registry.get("difficultySetting") : 0
                           , t = this.scene.registry.has("difficultyWinRate") ? this.scene.registry.get("difficultyWinRate") : .05
@@ -9391,8 +9391,8 @@
                         this._test ? (this._maxSpawnDelay = 2e3,
                         this.spawnStar(this.randomTypeObject(-1))) : e >= 1 ? (void 0 !== r ? (r *= n,
                         this._initialSize = Math.max(this._initialSize - r, .6),
-                        this._initialFallSpeed += r) : (this._initialSize = Math.max(this._initialSize - .01, .6),
-                        this._initialFallSpeed += .01),
+                        this._initialFallSpeed) : (this._initialSize = Math.max(this._initialSize - .01, .6),
+                        this._initialFallSpeed),
                         this.spawnStar(this.randomTypeObject(1)),
                         this._numRockets < this._maxRockets && Math.random() < this._rateRockets && (this._numRockets++,
                         this._initialRocketSize = Math.max(this._initialSize * this._initialRocketSize + r, 1.5),
@@ -9497,8 +9497,8 @@
                             console.log(this._planetPoints, this._playerPoints, this._pointscore);
                         else if (this._planetPoints <= 0 || this._playerPoints <= 0 || this._pointscore < 0) {
                             this._gameOver = !0,
-                            this._pointscore = 0,
-                            this._multiplier = 0,
+                            // this._pointscore = 0,
+                            // this._multiplier = 0,
                             this.setPaused(!0),
                             this.scene.game.events.emit("end_game", {
                                 score: Math.floor(this._pointscore * this._multiplier),
