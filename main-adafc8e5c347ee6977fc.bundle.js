@@ -9779,13 +9779,6 @@
                     s.disableInteractive(),
                     s.off("pointerover"),
                     this.spawnSmoke(r, n, s.depth),
-                    this._numberSliced++,
-                    this._pointscore += this.calculateAdditionScore(),
-                    this._consecutivePositiveHits++,
-                    this.updateMultiplier(),
-                    this.spawnParticle(e.x, e.y, "bmeteor0_fx"),
-                    A.NormalMeteor_Slice02.play();
-                    
                     this.killStar(s),
                     this._planetPoints--,
                     this.planet.getAnimationList().includes("Crack_0" + this._planetPoints) && this.planet.state.setAnimation(this._maxPlanetPoints - this._planetPoints, "Crack_0" + this._planetPoints, !0),
