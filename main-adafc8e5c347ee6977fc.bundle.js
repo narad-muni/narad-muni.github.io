@@ -8071,7 +8071,7 @@
             });
             var r = s(260)
               , n = s.n(r);
-            const i = s.p + "asset-packs/preload-asset-pack-6962362dcbb9b792c794.json";
+            const i = "https://prod.gateway.sliceit.com/my/game/" + "asset-packs/preload-asset-pack-6962362dcbb9b792c794.json";
             class a {
                 constructor(e) {
                     this._parent = e,
@@ -8498,8 +8498,8 @@
                     ))
                 }
             }
-            const k = s.p + "asset-packs/asset-pack-10426c9e82cab9e9ae9d.json"
-              , O = s.p + "asset-packs/asset-spine-pack-7a941a165f1cc44cfe7f.json";
+            const k = "https://prod.gateway.sliceit.com/my/game/" + "asset-packs/asset-pack-10426c9e82cab9e9ae9d.json"
+              , O = "https://prod.gateway.sliceit.com/my/game/" + "asset-packs/asset-spine-pack-7a941a165f1cc44cfe7f.json";
             class R extends n().Scene {
                 constructor() {
                     super("Preload")
@@ -10672,7 +10672,7 @@
         ,
         597: (e,t,s)=>{
             "use strict";
-            e.exports = s.p + "fonts/Rubik-VariableFont_wght-0dfbb61b2158905edb87.ttf"
+            e.exports = "https://prod.gateway.sliceit.com/my/game/" + "fonts/Rubik-VariableFont_wght-0dfbb61b2158905edb87.ttf"
         }
     }, n = {};
     function i(e) {
