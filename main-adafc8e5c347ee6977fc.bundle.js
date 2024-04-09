@@ -9381,7 +9381,7 @@
                 }
                 nextDifficultyLevel() {
                     if (!this._gameOver) {
-                        this._baseGravity += 50,
+                        // this._baseGravity += 50,
                         this._maxSpawnDelay = Math.max(this._maxSpawnDelay - 100, this._minSpawnDelay);
                         var e = this.scene.registry.has("difficultySetting") ? this.scene.registry.get("difficultySetting") : 0
                           , t = this.scene.registry.has("difficultyWinRate") ? this.scene.registry.get("difficultyWinRate") : .05
@@ -9460,7 +9460,7 @@
                     }
                     )),
                     this._test) {
-                        // this.nextDifficultyLevel(),
+                        this.nextDifficultyLevel(),
                         n().Math.RND.sow(["00000000"]);
                         var e = n().Math.RND.integer()
                           , t = n().Math.RND.frac()
@@ -9468,7 +9468,7 @@
                           , r = n().Math.RND.frac();
                         console.log(e, t, s, r)
                     } else
-                        // this.nextDifficultyLevel(),
+                        this.nextDifficultyLevel(),
                         this.scene.time.addEvent({
                             delay: this._maxSceneDelay,
                             callback: ()=>{
@@ -9497,8 +9497,8 @@
                             console.log(this._planetPoints, this._playerPoints, this._pointscore);
                         else if (this._planetPoints <= 0 || this._playerPoints <= 0 || this._pointscore < 0) {
                             this._gameOver = !0,
-                            // this._pointscore = 0,
-                            // this._multiplier = 0,
+                            this._pointscore = 0,
+                            this._multiplier = 0,
                             this.setPaused(!0),
                             this.scene.game.events.emit("end_game", {
                                 score: Math.floor(this._pointscore * this._multiplier),
