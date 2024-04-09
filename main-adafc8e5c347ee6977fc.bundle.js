@@ -9497,8 +9497,8 @@
                             console.log(this._planetPoints, this._playerPoints, this._pointscore);
                         else if (this._planetPoints <= 0 || this._playerPoints <= 0 || this._pointscore < 0) {
                             this._gameOver = !0,
-                            this._pointscore = 0,
-                            this._multiplier = 0,
+                            // this._pointscore = 0,
+                            // this._multiplier = 0,
                             this.setPaused(!0),
                             this.scene.game.events.emit("end_game", {
                                 score: Math.floor(this._pointscore * this._multiplier),
