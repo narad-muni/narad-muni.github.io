@@ -9209,8 +9209,8 @@
                     this._test_draw = !0,
                     this._targetWinRate = 35,
                     this._initialSize = 1,
-                    this._initialFallSpeed = 1,
-                    this._baseGravity = 50,
+                    this._initialFallSpeed = 0.7,
+                    this._baseGravity = 25,
                     this._minSpawnDelay = 240,
                     this._maxSpawnDelay = 240,
                     this._maxSceneDelay = 7e3,
@@ -9460,7 +9460,7 @@
                     }
                     )),
                     this._test) {
-                        this.nextDifficultyLevel(),
+                        // this.nextDifficultyLevel(),
                         n().Math.RND.sow(["00000000"]);
                         var e = n().Math.RND.integer()
                           , t = n().Math.RND.frac()
@@ -9468,7 +9468,7 @@
                           , r = n().Math.RND.frac();
                         console.log(e, t, s, r)
                     } else
-                        this.nextDifficultyLevel(),
+                        // this.nextDifficultyLevel(),
                         this.scene.time.addEvent({
                             delay: this._maxSceneDelay,
                             callback: ()=>{
@@ -9497,8 +9497,8 @@
                             console.log(this._planetPoints, this._playerPoints, this._pointscore);
                         else if (this._planetPoints <= 0 || this._playerPoints <= 0 || this._pointscore < 0) {
                             this._gameOver = !0,
-                            this._pointscore = 0,
-                            this._multiplier = 0,
+                            // this._pointscore = 0,
+                            // this._multiplier = 0,
                             this.setPaused(!0),
                             this.scene.game.events.emit("end_game", {
                                 score: Math.floor(this._pointscore * this._multiplier),
@@ -9779,6 +9779,13 @@
                     s.disableInteractive(),
                     s.off("pointerover"),
                     this.spawnSmoke(r, n, s.depth),
+                    this._numberSliced++,
+                    this._pointscore += this.calculateAdditionScore(),
+                    this._consecutivePositiveHits++,
+                    this.updateMultiplier(),
+                    this.spawnParticle(e.x, e.y, "bmeteor0_fx"),
+                    A.NormalMeteor_Slice02.play();
+                    
                     this.killStar(s),
                     this._planetPoints--,
                     this.planet.getAnimationList().includes("Crack_0" + this._planetPoints) && this.planet.state.setAnimation(this._maxPlanetPoints - this._planetPoints, "Crack_0" + this._planetPoints, !0),
