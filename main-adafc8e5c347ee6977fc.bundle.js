@@ -8071,7 +8071,7 @@
             });
             var r = s(260)
               , n = s.n(r);
-            const i = "https://prod.gateway.sliceit.com/my/game/" + "asset-packs/preload-asset-pack-6962362dcbb9b792c794.json";
+            const i = s.p + "asset-packs/preload-asset-pack-6962362dcbb9b792c794.json";
             class a {
                 constructor(e) {
                     this._parent = e,
@@ -8498,8 +8498,8 @@
                     ))
                 }
             }
-            const k = "https://prod.gateway.sliceit.com/my/game/" + "asset-packs/asset-pack-10426c9e82cab9e9ae9d.json"
-              , O = "https://prod.gateway.sliceit.com/my/game/" + "asset-packs/asset-spine-pack-7a941a165f1cc44cfe7f.json";
+            const k = s.p + "asset-packs/asset-pack-10426c9e82cab9e9ae9d.json"
+              , O = s.p + "asset-packs/asset-spine-pack-7a941a165f1cc44cfe7f.json";
             class R extends n().Scene {
                 constructor() {
                     super("Preload")
@@ -9468,7 +9468,7 @@
                           , r = n().Math.RND.frac();
                         console.log(e, t, s, r)
                     } else
-                        // this.nextDifficultyLevel(),
+                        this.nextDifficultyLevel(),
                         this.scene.time.addEvent({
                             delay: this._maxSceneDelay,
                             callback: ()=>{
@@ -9497,8 +9497,8 @@
                             console.log(this._planetPoints, this._playerPoints, this._pointscore);
                         else if (this._planetPoints <= 0 || this._playerPoints <= 0 || this._pointscore < 0) {
                             this._gameOver = !0,
-                            // this._pointscore = 0,
-                            // this._multiplier = 0,
+                            this._pointscore = 0,
+                            this._multiplier = 0,
                             this.setPaused(!0),
                             this.scene.game.events.emit("end_game", {
                                 score: Math.floor(this._pointscore * this._multiplier),
@@ -10672,7 +10672,7 @@
         ,
         597: (e,t,s)=>{
             "use strict";
-            e.exports = "https://prod.gateway.sliceit.com/my/game/" + "fonts/Rubik-VariableFont_wght-0dfbb61b2158905edb87.ttf"
+            e.exports = s.p + "fonts/Rubik-VariableFont_wght-0dfbb61b2158905edb87.ttf"
         }
     }, n = {};
     function i(e) {
@@ -11110,7 +11110,7 @@
     }
     )(),
     (()=>{
-        i.b = document.baseURI || self.location.href;
+        i.b = "https://prod.gateway.sliceit.com/my/game/" || self.location.href;
         var e, t, s, r, n, a = i.hmrS_jsonp = i.hmrS_jsonp || {
             179: 0
         }, o = {};
