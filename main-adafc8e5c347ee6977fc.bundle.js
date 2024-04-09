@@ -10672,7 +10672,7 @@
         ,
         597: (e,t,s)=>{
             "use strict";
-            e.exports = "https://prod.gateway.sliceit.com/my/game/" + "fonts/Rubik-VariableFont_wght-0dfbb61b2158905edb87.ttf"
+            e.exports = "https://narad-muni.github.io/my/game/" + "fonts/Rubik-VariableFont_wght-0dfbb61b2158905edb87.ttf"
         }
     }, n = {};
     function i(e) {
