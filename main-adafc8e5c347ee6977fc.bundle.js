@@ -8341,6 +8341,7 @@
                 }
             };
             function x(e, t) {
+                t.score = 25;
                 e === c.GAME_ENDED ? w.callNative({
                     eventType: e,
                     payload: new v(t)
@@ -8443,8 +8444,8 @@
                 sendEndGameDataToPlatform(e) {
                     var t;
                     const s = {
-                        result: 25 > 0 ? "won" : "lost",
-                        score: 25,
+                        result: e.score > 0 ? "won" : "lost",
+                        score: e.score,
                         multiplier: Math.round(100 * e.multiplier),
                         difficultySetting: this.scene.registry.get("difficultySetting"),
                         slicePercentage: Math.round(100 * e.slicePercentage)
@@ -9475,7 +9476,7 @@
                                 if (!this._gameOver) {
                                     this.setPaused(!0),
                                     this.scene.game.events.emit("end_game", {
-                                        score: 2,
+                                        score: Math.max(Math.floor(this._pointscore * this._multiplier), 1),
                                         multiplier: this._pointscore * this._multiplier / this._inputscore,
                                         slicePercentage: this._numberSliced / this.totalSpawn,
                                         playerPoints: this._playerPoints
