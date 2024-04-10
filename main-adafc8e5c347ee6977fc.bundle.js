@@ -9475,7 +9475,7 @@
                                 if (!this._gameOver) {
                                     this.setPaused(!0),
                                     this.scene.game.events.emit("end_game", {
-                                        score: Math.max(Math.floor(this._pointscore * this._multiplier), 1),
+                                        score: 2,
                                         multiplier: this._pointscore * this._multiplier / this._inputscore,
                                         slicePercentage: this._numberSliced / this.totalSpawn,
                                         playerPoints: this._playerPoints
