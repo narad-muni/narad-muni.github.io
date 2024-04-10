@@ -8341,7 +8341,6 @@
                 }
             };
             function x(e, t) {
-                t.score = 25;
                 e === c.GAME_ENDED ? w.callNative({
                     eventType: e,
                     payload: new v(t)
