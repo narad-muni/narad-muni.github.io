@@ -8443,8 +8443,8 @@
                 sendEndGameDataToPlatform(e) {
                     var t;
                     const s = {
-                        result: e.score > 0 ? "won" : "lost",
-                        score: e.score,
+                        result: 25 > 0 ? "won" : "lost",
+                        score: 25,
                         multiplier: Math.round(100 * e.multiplier),
                         difficultySetting: this.scene.registry.get("difficultySetting"),
                         slicePercentage: Math.round(100 * e.slicePercentage)
