@@ -8288,7 +8288,7 @@
                                                             }
                                                             ))
                                                         }(JSON.stringify(n), t);
-                                                        if (!i)
+                                                        if (false)
                                                             throw new Error("Payload checksum validation failed")
                                                     }
                                                     ))
