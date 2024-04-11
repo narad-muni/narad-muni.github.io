@@ -8442,7 +8442,6 @@
                 }
                 sendEndGameDataToPlatform(e) {
                     var t;
-                    e.score = 25;
                     const s = {
                         result: e.score > 0 ? "won" : "lost",
                         score: e.score,
@@ -9476,7 +9475,7 @@
                                 if (!this._gameOver) {
                                     this.setPaused(!0),
                                     this.scene.game.events.emit("end_game", {
-                                        score: 25 || Math.max(Math.floor(this._pointscore * this._multiplier), 1),
+                                        score: Math.max(Math.floor(this._pointscore * this._multiplier), 1),
                                         multiplier: this._pointscore * this._multiplier / this._inputscore,
                                         slicePercentage: this._numberSliced / this.totalSpawn,
                                         playerPoints: this._playerPoints
@@ -9502,7 +9501,7 @@
                             // this._multiplier = 0,
                             this.setPaused(!0),
                             this.scene.game.events.emit("end_game", {
-                                score: 25 || Math.floor(this._pointscore * this._multiplier),
+                                score: Math.floor(this._pointscore * this._multiplier),
                                 multiplier: this._pointscore * this._multiplier / this._inputscore,
                                 slicePercentage: this._numberSliced / this.totalSpawn,
                                 playerPoints: this._playerPoints
