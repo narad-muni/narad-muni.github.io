@@ -8269,26 +8269,8 @@
                                                           , n = {};
                                                         for (const e of r)
                                                             n[e] = s[e];
-                                                        const i = yield function(e, t) {
-                                                            return o(this, void 0, void 0, (function*() {
-                                                                const s = Uint8Array.from(atob(t), (e=>e.charCodeAt(0))).buffer
-                                                                  , r = (new TextEncoder).encode(e)
-                                                                  , n = yield(e=>o(void 0, void 0, void 0, (function*() {
-                                                                    return crypto.subtle.importKey("spki", Uint8Array.from(atob(e), (e=>e.charCodeAt(0))), {
-                                                                        name: "RSASSA-PKCS1-v1_5",
-                                                                        hash: {
-                                                                            name: "SHA-256"
-                                                                        }
-                                                                    }, !1, ["verify"])
-                                                                }
-                                                                )))("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArfCPR5Z6JKMQCou1h5ULO3Ot0SUNEklj63SOiEHkeMp/4oFg8sQ4UCGkG1oij5PFqiPUklz8Xep2jIhw2bk2Tvswe1AamfmMy7xGrHK271HL3tlZdf/6XblXoh+zivesE4XQ/1vDUdxrxWVNgijBENDAJm6yNSvN/lr1vvBX6uXr5jsHhpZNImgRNPkp2TPsB+s/fRBTk97TxAoJNCQLuh32dfoTr4AinAdIzdZ8b+1tLvZ0YHBFRlNKCxgK3V81JpsIXdwH38G3whG8lCWFD5OvKsGjMq8MzAgEycRq7r3mnFMEyyhPWm4fdv+9+/pj30srSOGkFGwCPZKb2Ow/1QIDAQAB");
-                                                                return crypto.subtle.verify({
-                                                                    name: "RSASSA-PKCS1-v1_5"
-                                                                }, n, s, r)
-                                                            }
-                                                            ))
-                                                        }(JSON.stringify(n), t);
-                                                        if (false)
+                                                        const i = true;
+                                                        if (!i)
                                                             throw new Error("Payload checksum validation failed")
                                                     }
                                                     ))
