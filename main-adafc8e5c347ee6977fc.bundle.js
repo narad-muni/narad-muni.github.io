@@ -8064,14 +8064,14 @@
             }
         }
         ,
-        866: (e,t,s)=>{
+        144: (e,t,s)=>{
             "use strict";
             s.d(t, {
-                Q: ()=>ae
+                Q: ()=>ge
             });
             var r = s(260)
               , n = s.n(r);
-            const i = "https://prod.gateway.sliceit.com/my/game/" + "asset-packs/preload-asset-pack-6962362dcbb9b792c794.json";
+            const i = s.p + "asset-packs/preload-asset-pack-6962362dcbb9b792c794.json";
             class a {
                 constructor(e) {
                     this._parent = e,
@@ -8154,72 +8154,120 @@
             }
             Object.create,
             Object.create;
-            var l, c, u, h, d, f, p, m = s(705), g = s.n(m);
-            class y {
+            var l = s(705)
+              , c = s.n(l);
+            const u = 0
+              , h = 1
+              , d = 1
+              , f = 3
+              , p = 3
+              , m = 5;
+            class g {
                 constructor(e) {
                     var t, s, r;
+                    this.isValidSkillLevel(+e.skillLevel, 5),
                     this.gameplayVariant = e.gameVariant,
                     this.scoreInput = +e.rewardAmount,
-                    this.difficultySetting = e.skillLevel,
+                    this.difficultySetting = this.extractDifficultySettingFromSkillLevel(+e.skillLevel),
+                    this.maxRocket = this.extractMaxRocketFromSkillLevel(+e.skillLevel),
+                    this.planetPoints = this.extractPlanetPointsFromSkillLevel(+e.skillLevel),
                     this.userHasMoreGames = e.additionalGames || !1,
                     this.difficultyWinRate = null !== (t = +e.winRate) && void 0 !== t ? t : 1,
-                    this.isShareEnabled = null !== (s = e.isShareEnabled) && void 0 !== s && s,
-                    this.resultOnNative = null !== (r = e.resultOnNative) && void 0 !== r && r,
+                    this.isRetriable = null !== (s = e.isRetriable) && void 0 !== s && s,
+                    this.isIntroductory = null !== (r = e.isIntroductory) && void 0 !== r && r,
                     this.validate()
                 }
+                isValidSkillLevel(e, t) {
+                    if (e.toString().length > t)
+                        throw new Error("Invalid skill level")
+                }
+                extractDifficultySettingFromSkillLevel(e) {
+                    const t = e.toString();
+                    return t.length < 5 ? 0 === e ? 0 : 1 : +t.slice(u, h) > 1 ? 1 : 0
+                }
+                extractPlanetPointsFromSkillLevel(e) {
+                    const t = e.toString();
+                    if (!(t.length < 5))
+                        return +t.slice(p, m)
+                }
+                extractMaxRocketFromSkillLevel(e) {
+                    const t = e.toString();
+                    if (!(t.length < 5))
+                        return +t.slice(d, f)
+                }
                 validate() {
-                    const e = g().object().keys({
-                        gameplayVariant: g().number().valid(0, 1).required(),
-                        scoreInput: g().number().positive().allow(0).required(),
-                        difficultySetting: g().number().valid(0, 1).required(),
-                        userHasMoreGames: g().boolean().required(),
-                        difficultyWinRate: g().number().required(),
-                        isShareEnabled: g().boolean().required(),
-                        resultOnNative: g().boolean().required()
+                    const e = c().object().keys({
+                        gameplayVariant: c().number().valid(0, 1).required(),
+                        scoreInput: c().number().positive().allow(0).required(),
+                        difficultySetting: c().number().valid(0, 1).required(),
+                        userHasMoreGames: c().boolean().required(),
+                        difficultyWinRate: c().number().required(),
+                        isRetriable: c().boolean().required(),
+                        isIntroductory: c().boolean().required(),
+                        maxRocket: c().number().optional(),
+                        planetPoints: c().number().optional()
                     })
                       , {error: t} = e.validate(this);
                     if (t)
                         throw new Error(t.message)
                 }
             }
-            class v {
+            class y {
                 constructor(e) {
                     this.score = e.score,
                     this.multiplier = e.multiplier,
                     this.difficultySetting = e.difficultySetting,
                     this.slicePercentage = e.slicePercentage,
-                    this.result = e.result
+                    this.sliceCount = e.sliceCount,
+                    this.totalSpawned = e.totalSpawned,
+                    this.result = e.result,
+                    e.lossReason && (this.lossReason = e.lossReason)
                 }
             }
+            var v, b, _, w, x, S, k, $;
             !function(e) {
                 e.START_GAME = "init_new_game"
-            }(l || (l = {})),
-            (p = c || (c = {})).GAME_LOAD = "game_loaded",
-            p.GAME_STARTED = "game_started",
-            p.GAME_ENDED = "game_ended",
-            p.CLICK_STREAM = "click_stream",
-            p.CTA_CLICK = "cta_click",
-            p.HAPTICS = "haptics",
-            p.AUTO_SHARE = "auto_share",
+            }(v || (v = {})),
+            ($ = b || (b = {})).GAME_LOAD = "game_loaded",
+            $.GAME_STARTED = "game_started",
+            $.GAME_ENDED = "game_ended",
+            $.CLICK_STREAM = "click_stream",
+            $.CTA_CLICK = "cta_click",
+            $.HAPTICS = "haptics",
+            $.AUTO_SHARE = "auto_share",
             function(e) {
                 e.SCHEMA_VALIDATION = "schema_validation_error",
                 e.HANDLER_NAME = "handler_name_error"
-            }(u || (u = {})),
+            }(_ || (_ = {})),
             function(e) {
                 e.LOW_IMPACT = "low",
                 e.MEDIUM_IMPACT = "medium",
                 e.HIGH_IMPACT = "high"
-            }(h || (h = {})),
+            }(w || (w = {})),
             function(e) {
                 e.IMPACT = "impact"
-            }(d || (d = {})),
+            }(x || (x = {})),
             function(e) {
                 e.CONTINUE = "continue",
                 e.PLAY_NEXT = "play_next",
                 e.SHARE = "share"
-            }(f || (f = {}));
-            const b = {};
-            function _(e) {
+            }(S || (S = {})),
+            function(e) {
+                e.METEOR_IMPACT = "meteorImpact",
+                e.BOMB_SLICED = "bombSliced"
+            }(k || (k = {}));
+            const O = "MIICIjANBgkqhkiG9w0BAQEFAAOCAg8AMIICCgKCAgEA3uTM+vbG8jyj1btwyA091TbMBj1qRuK5owBNSUVivSA+RAxAjOnEmKtj+WECLoOEX48l7FJpGz/ve4HYGBC3yKeWMxIlqMOGfe/J+MslZfsK0OK3pAJ1j+rXqbCK6KYowftFjoBynJnbI0n/QPFXfaCc+xuZXEDYWnusr19jOl8tk9/60vuBfCkX2c7k1zAycb5wn6jrH64UcVupOvesbM2Tr1+SXa6OykqHAaeLxsW5FuwouIBIVTZip47TYTMWjCiPOjfvcoUw0OBXwVYFJiU8zmJQsCWrTCjkotFHZwTVI58F8MgUadfa0EdMxbpYPQiw38kA3KcLawe0jIZbUpQkM9G/KQxIGFG0mc4dAh66HD/QCF3yEl/k+haraj6tq5Iq+PcBRFPoAq4cOy444XBMZVkPqXt5pRoj0E6EM9M1/iPS4uIzqj639z5dsvDm84aT+6lEFrZ2QreMRxoeusmr0Q8rJDa1WtCV93yqmd9zUCynplEHXgGpv2vlCIZPJjY0ks0I6w6DnA2RVYurQ6Z4Inwl4r0YFI8DcWWWAdW7ppmGkaKsulBILANK34dMqSVwVKp/cnZ4/lNImTUOtwdMAVXUH/6GGocQKM0/K24Ec+oyBxKDrcN+MvJFG0heFwaeNPs6OarjX+MH2gTuR5EyOgNPT/MMw2udni78yuMCAwEAAQ=="
+              , R = e=>o(void 0, void 0, void 0, (function*() {
+                return crypto.subtle.importKey("spki", Uint8Array.from(atob(e), (e=>e.charCodeAt(0))), {
+                    name: "RSASSA-PKCS1-v1_5",
+                    hash: {
+                        name: "SHA-256"
+                    }
+                }, !1, ["verify"])
+            }
+            ))
+              , A = {};
+            function j(e) {
                 switch (e) {
                 case "register":
                     return "Invalid arguments for registerHandler";
@@ -8235,18 +8283,18 @@
                     return "Unknown error"
                 }
             }
-            const w = {
+            const E = {
                 registerHandler: function(e, t) {
-                    "string" == typeof e && "function" == typeof t ? (b[e] = t,
-                    console.log(`Registered handler "${e}"`)) : console.error(_("register"))
+                    "string" == typeof e && "function" == typeof t ? (A[e] = t,
+                    console.log(`Registered handler "${e}"`)) : console.error(j("register"))
                 },
                 callHandler: function(e, t, s) {
                     return o(this, void 0, void 0, (function*() {
-                        Object.values(l).includes(e) ? ("string" != typeof t && (t = JSON.stringify(t)),
+                        Object.values(v).includes(e) ? ("string" != typeof t && (t = JSON.stringify(t)),
                         yield function(e, t) {
                             return o(this, void 0, void 0, (function*() {
                                 const s = JSON.parse(e);
-                                if (t === l.START_GAME)
+                                if (t === v.START_GAME)
                                     return function(e={}) {
                                         return o(this, void 0, void 0, (function*() {
                                             let t;
@@ -8273,18 +8321,15 @@
                                                             return o(this, void 0, void 0, (function*() {
                                                                 const s = Uint8Array.from(atob(t), (e=>e.charCodeAt(0))).buffer
                                                                   , r = (new TextEncoder).encode(e)
-                                                                  , n = yield(e=>o(void 0, void 0, void 0, (function*() {
-                                                                    return crypto.subtle.importKey("spki", Uint8Array.from(atob(e), (e=>e.charCodeAt(0))), {
-                                                                        name: "RSASSA-PKCS1-v1_5",
-                                                                        hash: {
-                                                                            name: "SHA-256"
-                                                                        }
-                                                                    }, !1, ["verify"])
-                                                                }
-                                                                )))("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArfCPR5Z6JKMQCou1h5ULO3Ot0SUNEklj63SOiEHkeMp/4oFg8sQ4UCGkG1oij5PFqiPUklz8Xep2jIhw2bk2Tvswe1AamfmMy7xGrHK271HL3tlZdf/6XblXoh+zivesE4XQ/1vDUdxrxWVNgijBENDAJm6yNSvN/lr1vvBX6uXr5jsHhpZNImgRNPkp2TPsB+s/fRBTk97TxAoJNCQLuh32dfoTr4AinAdIzdZ8b+1tLvZ0YHBFRlNKCxgK3V81JpsIXdwH38G3whG8lCWFD5OvKsGjMq8MzAgEycRq7r3mnFMEyyhPWm4fdv+9+/pj30srSOGkFGwCPZKb2Ow/1QIDAQAB");
+                                                                  , n = yield R("MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEArfCPR5Z6JKMQCou1h5ULO3Ot0SUNEklj63SOiEHkeMp/4oFg8sQ4UCGkG1oij5PFqiPUklz8Xep2jIhw2bk2Tvswe1AamfmMy7xGrHK271HL3tlZdf/6XblXoh+zivesE4XQ/1vDUdxrxWVNgijBENDAJm6yNSvN/lr1vvBX6uXr5jsHhpZNImgRNPkp2TPsB+s/fRBTk97TxAoJNCQLuh32dfoTr4AinAdIzdZ8b+1tLvZ0YHBFRlNKCxgK3V81JpsIXdwH38G3whG8lCWFD5OvKsGjMq8MzAgEycRq7r3mnFMEyyhPWm4fdv+9+/pj30srSOGkFGwCPZKb2Ow/1QIDAQAB");
+                                                                if (yield crypto.subtle.verify({
+                                                                    name: "RSASSA-PKCS1-v1_5"
+                                                                }, n, s, r))
+                                                                    return !0;
+                                                                const i = yield R(O);
                                                                 return crypto.subtle.verify({
                                                                     name: "RSASSA-PKCS1-v1_5"
-                                                                }, n, s, r)
+                                                                }, i, s, r)
                                                             }
                                                             ))
                                                         }(JSON.stringify(n), t);
@@ -8293,27 +8338,27 @@
                                                     }
                                                     ))
                                                 }(e),
-                                                t = new y(e)
+                                                t = new g(e)
                                             } catch (e) {
                                                 return console.log(e),
-                                                w.callNative({
-                                                    eventType: u.SCHEMA_VALIDATION,
+                                                E.callNative({
+                                                    eventType: _.SCHEMA_VALIDATION,
                                                     payload: {
-                                                        handlerName: l.START_GAME,
+                                                        handlerName: v.START_GAME,
                                                         info: e.message
                                                     }
                                                 })
                                             }
-                                            ae(t)
+                                            ge(t)
                                         }
                                         ))
                                     }(s);
                                 console.error("event type not handled")
                             }
                             ))
-                        }(t, e)) : (console.error(_("call")),
-                        w.callNative({
-                            eventType: u.HANDLER_NAME,
+                        }(t, e)) : (console.error(j("call")),
+                        E.callNative({
+                            eventType: _.HANDLER_NAME,
                             payload: {
                                 info: `Handler name ${e} is not registered`
                             }
@@ -8337,20 +8382,20 @@
                         }
                     else
                         console.error("Not running in a WebView"),
-                        console.error(_("native"))
+                        console.error(j("native"))
                 }
             };
-            function x(e, t) {
-                e === c.GAME_ENDED ? w.callNative({
+            function M(e, t) {
+                e === b.GAME_ENDED ? E.callNative({
                     eventType: e,
-                    payload: new v(t)
-                }) : w.callNative({
+                    payload: new y(t)
+                }) : E.callNative({
                     eventType: e,
                     payload: t
                 })
             }
-            window.JSBridge = w;
-            class S extends a {
+            window.JSBridge = E;
+            class C extends a {
                 constructor(e) {
                     super(e),
                     this.eventNames = ["swipe_event", "started_game", "end_game", "vibrate_event", "cta_event", "loaded_event"],
@@ -8425,8 +8470,8 @@
                         },
                         data: e.data
                     };
-                    x(c.CLICK_STREAM, t),
-                    console.log(`🚀 ~ ${c.CLICK_STREAM}`, t)
+                    M(b.CLICK_STREAM, t),
+                    console.log(`🚀 ~ ${b.CLICK_STREAM}`, t)
                 }
                 sendStartedGameDataToPlatform(e) {
                     const t = {
@@ -8437,8 +8482,8 @@
                             level: this.scene.registry.get("difficultySetting")
                         }
                     };
-                    x(c.GAME_STARTED, t),
-                    console.log(`🚀 ~ ${c.GAME_STARTED}`, t)
+                    M(b.GAME_STARTED, t),
+                    console.log(`🚀 ~ ${b.GAME_STARTED}`, t)
                 }
                 sendEndGameDataToPlatform(e) {
                     var t;
@@ -8447,20 +8492,17 @@
                         score: e.score,
                         multiplier: Math.round(100 * e.multiplier),
                         difficultySetting: this.scene.registry.get("difficultySetting"),
-                        slicePercentage: Math.round(100 * e.slicePercentage)
+                        slicePercentage: Math.round(100 * e.slicePercentage),
+                        sliceCount: e.sliceCount,
+                        totalSpawned: e.totalSpawned,
+                        lossReason: e.lossReason
                     };
-                    null !== (t = this.scene.registry.get("resultOnNative")) && void 0 !== t && t && !s.score && e.playerPoints < 1 ? setTimeout((()=>x(c.GAME_ENDED, s)), 3500) : x(c.GAME_ENDED, s),
-                    this.sendAutoShareEventToPlatform(s.score),
-                    console.log(`🚀 ~ ${c.GAME_ENDED}`)
-                }
-                sendAutoShareEventToPlatform(e) {
-                    if (this.scene.registry.has("isShareEnabled") && this.scene.registry.get("isShareEnabled") && e >= 50) {
-                        const e = {
-                            eligible: !0,
-                            delay: 5e3
-                        };
-                        x(c.AUTO_SHARE, e)
-                    }
+                    if (!s.score && e.playerPoints < 1) {
+                        const e = null !== (t = !this.scene.registry.get("isRetriable")) && void 0 !== t && t ? 3500 : 2e3;
+                        setTimeout((()=>M(b.GAME_ENDED, s)), e)
+                    } else
+                        M(b.GAME_ENDED, s);
+                    console.log(`🚀 ~ ${b.GAME_ENDED}`)
                 }
                 sendHapticDataToPlatform(e) {
                     const t = {
@@ -8469,21 +8511,21 @@
                             intensity: e.props.intensity
                         }
                     };
-                    x(c.HAPTICS, t),
-                    console.log(`🚀 ~ ${c.HAPTICS}`, t)
+                    M(b.HAPTICS, t),
+                    console.log(`🚀 ~ ${b.HAPTICS}`, t)
                 }
                 sendCTAClickEventToPlatform(e) {
                     const t = {
                         ctaType: e.ctaType
                     };
-                    x(c.CTA_CLICK, t),
-                    console.log(`🚀 ~ ${c.CTA_CLICK}`, t)
+                    M(b.CTA_CLICK, t),
+                    console.log(`🚀 ~ ${b.CTA_CLICK}`, t)
                 }
                 sendGameLoadedEventToPlatform(e) {
-                    x(c.GAME_LOAD, e)
+                    M(b.GAME_LOAD, e)
                 }
             }
-            class $ extends a {
+            class T extends a {
                 constructor(e) {
                     super(e)
                 }
@@ -8498,9 +8540,9 @@
                     ))
                 }
             }
-            const k = "https://prod.gateway.sliceit.com/my/game/" + "asset-packs/asset-pack-10426c9e82cab9e9ae9d.json"
-              , O = "https://prod.gateway.sliceit.com/my/game/" + "asset-packs/asset-spine-pack-7a941a165f1cc44cfe7f.json";
-            class R extends n().Scene {
+            const I = s.p + "asset-packs/asset-pack-10426c9e82cab9e9ae9d.json"
+              , D = s.p + "asset-packs/asset-spine-pack-7a941a165f1cc44cfe7f.json";
+            class P extends n().Scene {
                 constructor() {
                     super("Preload")
                 }
@@ -8511,7 +8553,7 @@
                     t.isFilled = !0,
                     t.fillColor = 14737632,
                     e.add(t),
-                    new $(t);
+                    new T(t);
                     const s = this.add.rectangle(0, 32, 256, 20);
                     s.setOrigin(0, 0),
                     s.fillColor = 14737632,
@@ -8529,8 +8571,8 @@
                     this.events.emit("scene-awake")
                 }
                 preload() {
-                    this.load.pack("asset-pack", k),
-                    this.load.pack("asset-spine", O)
+                    this.load.pack("asset-pack", I),
+                    this.load.pack("asset-spine", D)
                 }
                 create() {
                     const e = this.registry.has("difficultySetting") ? this.registry.get("difficultySetting") : 0;
@@ -8540,48 +8582,48 @@
                     })
                 }
             }
-            class A {
+            class N {
                 static init(e) {
-                    if (A.musicSound)
-                        return void A.musicSound.play();
-                    A.effectsEnabled = !0;
+                    if (N.musicSound)
+                        return void N.musicSound.play();
+                    N.effectsEnabled = !0;
                     const t = n().Utils.Array.GetRandom(["BGMusic_05", "BGMusic_07"]);
-                    A.musicSound = e.sound.add(t),
-                    A.musicSound.play({
+                    N.musicSound = e.sound.add(t),
+                    N.musicSound.play({
                         loop: !0,
                         volume: .2
                     }),
-                    A.NormalMeteor_Slice01 = e.sound.add("NormalMeteor_Slice01"),
-                    A.NormalMeteor_Slice02 = e.sound.add("NormalMeteor_Slice02"),
-                    A.Planet_Hit = e.sound.add("Planet_Hit"),
-                    A.Rocket_Slice = e.sound.add("Rocket_Slice"),
-                    A.Swipe_01 = e.sound.add("Swipe_01"),
-                    A.Swipe_02 = e.sound.add("Swipe_02"),
-                    A.Swipe_Bonus = e.sound.add("Swipe_Bonus"),
-                    A.Lose = e.sound.add("Lose"),
-                    A.Win = e.sound.add("Win")
+                    N.NormalMeteor_Slice01 = e.sound.add("NormalMeteor_Slice01"),
+                    N.NormalMeteor_Slice02 = e.sound.add("NormalMeteor_Slice02"),
+                    N.Planet_Hit = e.sound.add("Planet_Hit"),
+                    N.Rocket_Slice = e.sound.add("Rocket_Slice"),
+                    N.Swipe_01 = e.sound.add("Swipe_01"),
+                    N.Swipe_02 = e.sound.add("Swipe_02"),
+                    N.Swipe_Bonus = e.sound.add("Swipe_Bonus"),
+                    N.Lose = e.sound.add("Lose"),
+                    N.Win = e.sound.add("Win")
                 }
                 static toggleMusic() {
-                    A.musicEnabled ? A.musicSound.pause() : A.musicSound.resume()
+                    N.musicEnabled ? N.musicSound.pause() : N.musicSound.resume()
                 }
                 static get musicEnabled() {
-                    return A.musicSound && A.musicSound.isPlaying
+                    return N.musicSound && N.musicSound.isPlaying
                 }
                 static toggleEffects() {
-                    A.effectsEnabled = !A.effectsEnabled
+                    N.effectsEnabled = !N.effectsEnabled
                 }
                 static playBubble() {
-                    A.effectsEnabled && A.bubbleSound.play()
+                    N.effectsEnabled && N.bubbleSound.play()
                 }
             }
-            class j extends n().GameObjects.Container {
+            class L extends n().GameObjects.Container {
                 constructor(e, t, s) {
                     super(e, null != t ? t : 0, null != s ? s : 30),
                     this.star = this.scene.add.spine(360, 720, "StartBG").setScale(2),
                     this.star.state.setAnimation(0, "animation", !0)
                 }
             }
-            class E extends n().GameObjects.Container {
+            class F extends n().GameObjects.Container {
                 constructor(e, t, s) {
                     super(e, null != t ? t : 0, null != s ? s : 0);
                     const r = e.add.image(180, 520, "SlicetoBegin").setScale(.475).setAlpha(0);
@@ -8627,12 +8669,12 @@
                                 })
                             }
                         }),
-                        Math.random() < .6 ? A.Swipe_01.play() : A.Swipe_02.play()
+                        Math.random() < .6 ? N.Swipe_01.play() : N.Swipe_02.play()
                     }
                     ), this)
                 }
             }
-            class T extends a {
+            class q extends a {
                 constructor(e) {
                     super(e)
                 }
@@ -8640,7 +8682,7 @@
                     return super.gameObject
                 }
             }
-            class M extends T {
+            class B extends q {
                 constructor(e) {
                     super(e),
                     this.offset = 20
@@ -8658,7 +8700,7 @@
                     })
                 }
             }
-            class C extends a {
+            class G extends a {
                 constructor(e) {
                     super(e),
                     this.eventName = "",
@@ -8704,14 +8746,14 @@
                         }
                 }
             }
-            class I {
+            class z {
                 constructor(e, t, s) {
                     this.x = e,
                     this.y = t,
                     this.time = s
                 }
             }
-            class D extends C {
+            class U extends G {
                 constructor(e) {
                     super(e),
                     this.head = {
@@ -8731,7 +8773,7 @@
                     this.scene.input.on("pointermove", (e=>{
                         e.isDown && (this.head.x = e.x,
                         this.head.y = e.y,
-                        this.points.push(new I(this.head.x,this.head.y,4)))
+                        this.points.push(new z(this.head.x,this.head.y,4)))
                     }
                     ))
                 }
@@ -8760,7 +8802,7 @@
                         e -= 1)
                 }
             }
-            class P extends n().Scene {
+            class H extends n().Scene {
                 constructor() {
                     super("Welcome")
                 }
@@ -8772,12 +8814,12 @@
                     e.fillColor = 0;
                     const t = this.add.image(0, 0, "StartBG");
                     t.setOrigin(0, 0);
-                    const s = new j(this,0,0);
+                    const s = new L(this,0,0);
                     this.add.existing(s);
-                    const r = new E(this,0,0);
+                    const r = new F(this,0,0);
                     this.add.existing(r);
-                    const n = new M(r);
-                    new D(this),
+                    const n = new B(r);
+                    new U(this),
                     n.offset = 0,
                     this.rectangle_1 = e,
                     this.startBG = t,
@@ -8793,11 +8835,11 @@
                     this.startBG.setScale(2)
                 }
                 create() {
-                    A.init(this),
+                    N.init(this),
                     this.game.events.emit("loaded_event", {})
                 }
             }
-            class N extends a {
+            class W extends a {
                 constructor(e) {
                     super(e)
                 }
@@ -8808,7 +8850,7 @@
                     this.gameObject.text = e
                 }
             }
-            class L extends n().GameObjects.Layer {
+            class K extends n().GameObjects.Layer {
                 constructor(e) {
                     super(e);
                     const t = e.add.image(360, 90, "coin");
@@ -8823,8 +8865,8 @@
                         fontSize: "32px"
                     }),
                     this.add(s);
-                    const r = new C(s);
-                    new N(r);
+                    const r = new G(s);
+                    new W(r);
                     const n = e.add.text(642, 100, "", {});
                     n.setOrigin(.5, .5),
                     n.visible = !1,
@@ -8839,9 +8881,9 @@
                         fontSize: "24px"
                     }),
                     this.add(n);
-                    const i = new M(n)
-                      , a = new C(n);
-                    new N(a),
+                    const i = new B(n)
+                      , a = new G(n);
+                    new W(a),
                     r.eventName = "update-points",
                     r.eventEmitter = "scene.events",
                     i.offset = 5,
@@ -8849,7 +8891,7 @@
                     a.eventEmitter = "scene.events"
                 }
             }
-            class F extends n().GameObjects.Ellipse {
+            class V extends n().GameObjects.Ellipse {
                 constructor(e, t, s, r, n) {
                     super(e, null != t ? t : 0, null != s ? s : 0, null != r ? r : 360, null != n ? n : 360),
                     e.physics.add.existing(this, !0),
@@ -8857,7 +8899,7 @@
                     this.isFilled = !0
                 }
             }
-            class q extends n().GameObjects.Image {
+            class X extends n().GameObjects.Image {
                 constructor(e, t, s, r, n) {
                     super(e, null != t ? t : 0, null != s ? s : 0, r || "star1", n)
                 }
@@ -8875,9 +8917,8 @@
                     })
                 }
             }
-            var z;
             s(241);
-            class B extends SpinePlugin.SpineGameObject {
+            class Y extends SpinePlugin.SpineGameObject {
                 constructor(e, t, s, r, n) {
                     var i;
                     super(e, e.spine, null != t ? t : 0, null != s ? s : 0, r || "flares", null !== (i = n) && void 0 !== i ? i : "yellow")
@@ -8896,18 +8937,18 @@
                     })
                 }
             }
-            class G extends n().GameObjects.Image {
+            class Z extends n().GameObjects.Image {
                 constructor(e, t, s, r, n) {
                     super(e, null != t ? t : 0, null != s ? s : 0, r || "star1", n)
                 }
             }
-            class H extends n().GameObjects.Image {
+            class J extends n().GameObjects.Image {
                 constructor(e, t, s, r, n) {
                     super(e, null != t ? t : 0, null != s ? s : 0, r || "bg1", n),
                     this.setOrigin(0, 0)
                 }
             }
-            class U extends a {
+            class Q extends a {
                 constructor(e) {
                     super(e),
                     this.sceneKey = ""
@@ -8916,7 +8957,7 @@
                     this.scene.scene.start(this.sceneKey, ...e)
                 }
             }
-            class W extends C {
+            class ee extends G {
                 constructor(e) {
                     super(e),
                     this.eventName = "pointerdown"
@@ -8926,7 +8967,7 @@
                     super.awake())
                 }
             }
-            class V extends a {
+            class te extends a {
                 constructor(e) {
                     super(e)
                 }
@@ -8950,7 +8991,7 @@
                     }
                 }
             }
-            class K extends a {
+            class se extends a {
                 constructor(e) {
                     super(e)
                 }
@@ -8958,7 +8999,7 @@
                     this.callback && this.callback(...e)
                 }
             }
-            class X extends T {
+            class re extends q {
                 constructor(e) {
                     super(e),
                     this.duration = 1e3,
@@ -8979,30 +9020,29 @@
                     this.gameObject.alpha = 0
                 }
             }
-            class Y extends n().GameObjects.Container {
+            class ne extends n().GameObjects.Container {
                 constructor(e, t, s) {
-                    var r;
                     super(e, null != t ? t : 0, null != s ? s : 0);
-                    const i = e.add.rectangle(0, 0, 360, 720);
-                    i.setOrigin(0, 0),
-                    i.alpha = .95,
-                    i.isFilled = !0,
-                    i.fillColor = 0,
+                    const r = e.add.rectangle(0, 0, 360, 720);
+                    r.setOrigin(0, 0),
+                    r.alpha = .95,
+                    r.isFilled = !0,
+                    r.fillColor = 0,
+                    this.add(r);
+                    const i = new J(e);
+                    i.scaleX = 1,
+                    i.scaleY = 1,
+                    i.visible = !1,
                     this.add(i);
-                    const a = new H(e);
-                    a.scaleX = 1,
-                    a.scaleY = 1,
-                    a.visible = !1,
-                    this.add(a);
-                    const o = e.add.text(360, 680, "", {});
-                    o.setOrigin(.5, .5),
-                    o.tintFill = !0,
-                    o.tintTopLeft = 16777215,
-                    o.tintTopRight = 16777215,
-                    o.tintBottomLeft = 12634111,
-                    o.tintBottomRight = 12634111,
-                    o.text = "₹330",
-                    o.setStyle({
+                    const a = e.add.text(360, 680, "", {});
+                    a.setOrigin(.5, .5),
+                    a.tintFill = !0,
+                    a.tintTopLeft = 16777215,
+                    a.tintTopRight = 16777215,
+                    a.tintBottomLeft = 12634111,
+                    a.tintBottomRight = 12634111,
+                    a.text = "₹330",
+                    a.setStyle({
                         align: "right",
                         backgroundColor: "",
                         fontFamily: "Rubik",
@@ -9011,51 +9051,51 @@
                         "shadow.offsetY": 2,
                         "shadow.blur": 2
                     }),
-                    o.visible = !1,
-                    this.add(o);
-                    const l = new U(o)
-                      , c = e.add.image(354, 1170, "playnext");
-                    c.visible = !1,
-                    c.setInteractive(new (n().Geom.Rectangle)(0,0,256,106), n().Geom.Rectangle.Contains),
-                    this.add(c);
-                    const u = new W(c)
-                      , h = new V(u)
-                      , d = new K(h)
-                      , f = e.add.image(354, 1170, "continue");
-                    f.visible = !1,
-                    f.setInteractive(new (n().Geom.Rectangle)(0,0,256,106), n().Geom.Rectangle.Contains),
-                    this.add(f);
-                    const p = new W(f)
-                      , m = new V(p)
-                      , g = new K(m)
-                      , y = e.add.image(76, 170, "x");
-                    y.visible = !1,
-                    y.setInteractive(new (n().Geom.Rectangle)(0,0,72,78), n().Geom.Rectangle.Contains),
-                    this.add(y);
-                    const v = new W(y)
-                      , b = new V(v)
-                      , _ = new K(b)
-                      , w = e.add.image(644, 170, "share");
-                    w.visible = !1,
-                    w.setInteractive(new (n().Geom.Rectangle)(0,0,72,78), n().Geom.Rectangle.Contains),
-                    this.add(w);
-                    const x = new W(w)
-                      , S = new V(x)
-                      , $ = new K(S);
-                    new X(this),
-                    l.sceneKey = "Preload",
-                    d.callback = ()=>this.playnextGame(),
-                    g.callback = ()=>this.continueGame(),
-                    _.callback = ()=>this.continueGame(),
-                    $.callback = ()=>this.shareInfo(),
-                    this.rectangle_1 = i,
-                    this.endBackground = a,
-                    this.bitmaptext_1 = o,
-                    this.btn_playnext = c,
-                    this.btn_continue = f,
-                    this.btn_x = y,
-                    this.btn_share = w,
-                    this.resultOnNative = null !== (r = this.scene.registry.get("resultOnNative")) && void 0 !== r && r,
+                    a.visible = !1,
+                    this.add(a);
+                    const o = new Q(a)
+                      , l = e.add.image(354, 1170, "playnext");
+                    l.visible = !1,
+                    l.setInteractive(new (n().Geom.Rectangle)(0,0,256,106), n().Geom.Rectangle.Contains),
+                    this.add(l);
+                    const c = new ee(l)
+                      , u = new te(c)
+                      , h = new se(u)
+                      , d = e.add.image(354, 1170, "continue");
+                    d.visible = !1,
+                    d.setInteractive(new (n().Geom.Rectangle)(0,0,256,106), n().Geom.Rectangle.Contains),
+                    this.add(d);
+                    const f = new ee(d)
+                      , p = new te(f)
+                      , m = new se(p)
+                      , g = e.add.image(76, 170, "x");
+                    g.visible = !1,
+                    g.setInteractive(new (n().Geom.Rectangle)(0,0,72,78), n().Geom.Rectangle.Contains),
+                    this.add(g);
+                    const y = new ee(g)
+                      , v = new te(y)
+                      , b = new se(v)
+                      , _ = e.add.image(644, 170, "share");
+                    _.visible = !1,
+                    _.setInteractive(new (n().Geom.Rectangle)(0,0,72,78), n().Geom.Rectangle.Contains),
+                    this.add(_);
+                    const w = new ee(_)
+                      , x = new te(w)
+                      , S = new se(x);
+                    new re(this),
+                    o.sceneKey = "Preload",
+                    h.callback = ()=>this.playnextGame(),
+                    m.callback = ()=>this.continueGame(),
+                    b.callback = ()=>this.continueGame(),
+                    S.callback = ()=>this.shareInfo(),
+                    this.rectangle_1 = r,
+                    this.endBackground = i,
+                    this.bitmaptext_1 = a,
+                    this.btn_playnext = l,
+                    this.btn_continue = d,
+                    this.btn_x = g,
+                    this.btn_share = _,
+                    this.resultOnNative = !0,
                     this.resultOnNative || (this.scoreScreen = new SpinePlugin.SpineGameObject(this.scene,this.scene.spine,360,720,"ScoreScreen").setScale(2),
                     this.scene.sys.displayList.add(this.scoreScreen),
                     this.scene.sys.updateList.add(this.scoreScreen),
@@ -9076,19 +9116,19 @@
                 }
                 playnextGame() {
                     this.scene.game.events.emit("cta_event", {
-                        ctaType: f.PLAY_NEXT
+                        ctaType: S.PLAY_NEXT
                     }),
                     this.exitGame(!0)
                 }
                 continueGame() {
                     this.scene.game.events.emit("cta_event", {
-                        ctaType: f.CONTINUE
+                        ctaType: S.CONTINUE
                     }),
                     this.exitGame(!0)
                 }
                 shareInfo() {
                     this.scene.game.events.emit("cta_event", {
-                        ctaType: f.SHARE
+                        ctaType: S.SHARE
                     })
                 }
                 setScore(e, t, s) {
@@ -9143,10 +9183,9 @@
                         if ("event_x" == r.data.name && (this.bitmaptext_1.visible = !h && !!s,
                         this.bitmaptext_1.text = this.padMid("₹" + o.format(e * s), 8, " ")),
                         "event" == r.data.name) {
-                            const e = !!this.scene.registry.has("userHasMoreGames") && this.scene.registry.get("userHasMoreGames")
-                              , t = this.scene.registry.has("score") ? this.scene.registry.get("score") : 0;
+                            const e = !!this.scene.registry.has("userHasMoreGames") && this.scene.registry.get("userHasMoreGames");
+                            this.scene.registry.has("score") && this.scene.registry.get("score");
                             e ? this.btn_playnext.visible = !0 : this.btn_continue.visible = !0,
-                            !!this.scene.registry.has("isShareEnabled") && this.scene.registry.get("isShareEnabled") && t > 0 && (this.btn_share.visible = !0),
                             this.btn_x.visible = !0
                         }
                     }
@@ -9161,7 +9200,7 @@
                     return this.bitmaptext_1.text
                 }
             }
-            class Z extends n().GameObjects.Container {
+            class ie extends n().GameObjects.Container {
                 constructor(e, t, s) {
                     super(e, null != t ? t : 0, null != s ? s : 0);
                     const r = e.add.image(0, 0, "bg0");
@@ -9172,26 +9211,41 @@
                     n.text = "You Won!\n",
                     n.fontSize = 80,
                     this.add(n),
-                    new M(n);
+                    new B(n);
                     const i = e.add.image(180, 557, "buttons", "Button Pack - Green_Button Green - Play.png");
                     i.flipX = !0,
                     this.add(i);
-                    const a = new W(i)
-                      , o = new V(a)
-                      , l = new U(o)
-                      , c = new M(i);
-                    new X(this),
+                    const a = new ee(i)
+                      , o = new te(a)
+                      , l = new Q(o)
+                      , c = new B(i);
+                    new re(this),
                     l.sceneKey = "Preload",
                     c.offset = 10
                 }
             }
-            class J {
+            function ae(e, t, s=1, r) {
+                if (0 === s)
+                    throw new Error("step can't be zero");
+                if (void 0 === r) {
+                    const n = [e, t, s].map((e=>(e.toString().split(".")[1] || "").length));
+                    r = Math.max(...n)
+                }
+                if (e > t && s > 0 || e < t && s < 0)
+                    throw new Error("Invalid range");
+                const n = [];
+                for (let i = e; i <= t; i += s)
+                    n.push(+i.toFixed(r));
+                return n
+            }
+            class oe {
                 constructor(e, t, s) {
                     this.size = e,
                     this.fallSpeed = t,
                     this.fallAngle = s
                 }
             }
+            var le;
             !function(e) {
                 e[e.NOBJECT = -1] = "NOBJECT",
                 e[e.BMETEOR = 0] = "BMETEOR",
@@ -9199,8 +9253,8 @@
                 e[e.SROCKET = 2] = "SROCKET",
                 e[e.TBONUS1X = 3] = "TBONUS1X",
                 e[e.TBONUS2X = 4] = "TBONUS2X"
-            }(z || (z = {}));
-            class Q extends a {
+            }(le || (le = {}));
+            class ce extends a {
                 constructor(e) {
                     super(e),
                     this._info = {},
@@ -9223,6 +9277,7 @@
                     this._pointstart = 0,
                     this._gameOver = !1,
                     this._numberSliced = 0,
+                    this._currentSpawned = 0,
                     this._multiplier = 1,
                     this._maxMultiplier = 4,
                     this._consecutivePositiveHits = 0,
@@ -9231,7 +9286,7 @@
                     this._meteorMultipier = 1.5,
                     this._mulAJ = 1.4,
                     this._numRockets = 0,
-                    this._maxRockets = 3,
+                    this._maxRockets = 4,
                     this._rateRockets = .23,
                     this._initialRocketSize = 1,
                     this._initialRocketFallSpeed = 1,
@@ -9276,17 +9331,17 @@
                         0: {
                             percent: [.72, 1, 1, 1, 1],
                             pOffset: [.72, .28, 0, 0, 0],
-                            rate: [.1, .2, .4, .7, 1],
-                            rmul: [.2, .2, .2, .2, .2]
+                            rate: [.1, .2, .3, .4, .5, .6, .7, .8, .9, 1],
+                            rmul: [.2, .2, .2, .2, .2, .2]
                         },
                         1: {
                             percent: [.7, 1, 1, 1, 1],
                             pOffset: [.7, .3, 0, 0, 0],
-                            rate: [.1, .2, .4, .7, 1, 1.1, 1.2, 1.4, 1.7, 2, 2.2, 2.3, 2.5, 2.8, 3],
+                            rate: ae(.1, 3, .05),
                             rmul: [.9, .9, .9, .9, .9]
                         }
                     },
-                    this._info[z.BMETEOR] = {
+                    this._info[le.BMETEOR] = {
                         textures: this.bmeteors,
                         scale: 1,
                         rotation: 0,
@@ -9294,7 +9349,7 @@
                         isSpine: !0,
                         spawnRates: [this._infoRate[0].pOffset[0], this._infoRate[1].pOffset[0]]
                     },
-                    this._info[z.SMETEOR] = {
+                    this._info[le.SMETEOR] = {
                         textures: this.smeteors,
                         scale: 1,
                         rotation: 0,
@@ -9302,7 +9357,7 @@
                         isSpine: !0,
                         spawnRates: [this._infoRate[0].pOffset[1], this._infoRate[1].pOffset[1]]
                     },
-                    this._info[z.SROCKET] = {
+                    this._info[le.SROCKET] = {
                         textures: this.srockets,
                         scale: 1,
                         rotation: -Math.PI / 2,
@@ -9310,7 +9365,7 @@
                         isSpine: !0,
                         spawnRates: [this._infoRate[0].pOffset[2], this._infoRate[1].pOffset[2]]
                     },
-                    this._info[z.TBONUS1X] = {
+                    this._info[le.TBONUS1X] = {
                         textures: this.tbonus1x,
                         scale: .9,
                         rotation: +Math.PI / 2,
@@ -9318,7 +9373,7 @@
                         isSpine: !1,
                         spawnRates: [this._infoRate[0].pOffset[3], this._infoRate[1].pOffset[3]]
                     },
-                    this._info[z.TBONUS2X] = {
+                    this._info[le.TBONUS2X] = {
                         textures: this.tbonus2x,
                         scale: .9,
                         rotation: +Math.PI / 2,
@@ -9343,13 +9398,13 @@
                 randomTypeObject(e) {
                     switch (e) {
                     case -1:
-                        return z.SMETEOR;
+                        return le.SMETEOR;
                     case 0:
                     case 1:
                         var t;
-                        return (t = Math.random()) < this._infoRate[e].percent[0] ? z.BMETEOR : t < this._infoRate[e].percent[1] ? z.SMETEOR : t < this._infoRate[e].percent[2] ? z.SROCKET : t < this._infoRate[e].percent[3] ? z.TBONUS1X : t < this._infoRate[e].percent[4] ? z.TBONUS2X : z.SROCKET;
+                        return (t = Math.random()) < this._infoRate[e].percent[0] ? le.BMETEOR : t < this._infoRate[e].percent[1] ? le.SMETEOR : t < this._infoRate[e].percent[2] ? le.SROCKET : t < this._infoRate[e].percent[3] ? le.TBONUS1X : t < this._infoRate[e].percent[4] ? le.TBONUS2X : le.SROCKET;
                     default:
-                        return z.SROCKET
+                        return le.SROCKET
                     }
                 }
                 calculateAdditionScore() {
@@ -9360,10 +9415,10 @@
                       , n = this.scene.registry.has("slicePercent1") ? this.scene.registry.get("slicePercent1") : .73
                       , i = this.scene.registry.has("slicePercent2") ? this.scene.registry.get("slicePercent2") : .84;
                     let a = this.scene.registry.has("scoreInput") ? this.scene.registry.get("scoreInput") : 100;
-                    const o = this._info[z.BMETEOR].spawnRates[r] * e
-                      , l = this._info[z.SMETEOR].spawnRates[r] * e
-                      , c = this._info[z.TBONUS1X].spawnRates[r] * e
-                      , u = this._info[z.TBONUS2X].spawnRates[r] * e;
+                    const o = this._info[le.BMETEOR].spawnRates[r] * e
+                      , l = this._info[le.SMETEOR].spawnRates[r] * e
+                      , c = this._info[le.TBONUS1X].spawnRates[r] * e
+                      , u = this._info[le.TBONUS2X].spawnRates[r] * e;
                     let h = 1
                       , d = 0
                       , f = n;
@@ -9396,8 +9451,8 @@
                         this.spawnStar(this.randomTypeObject(1)),
                         this._numRockets < this._maxRockets && Math.random() < this._rateRockets && (this._numRockets++,
                         this._initialRocketSize = Math.max(this._initialSize * this._initialRocketSize + r, 1.5),
-                        this._initialRocketFallSpeed += r,
-                        this.spawnStar(z.SROCKET))) : e < 1 && (void 0 !== r ? (r *= n,
+                        this._initialRocketFallSpeed = .9 * (this._initialRocketFallSpeed + r),
+                        this.spawnStar(le.SROCKET))) : e < 1 && (void 0 !== r ? (r *= n,
                         this._initialSize = Math.min(this._initialSize + r, 1.04),
                         this._initialFallSpeed += r) : (this._initialSize = Math.min(this._initialSize + .01, 1.04),
                         this._initialFallSpeed += .01),
@@ -9405,7 +9460,7 @@
                         this._numRockets < this._maxRockets && Math.random() < this._rateRockets && (this._numRockets++,
                         this._initialRocketSize = Math.max(this._initialSize * this._initialRocketSize + r, 1.5),
                         this._initialRocketFallSpeed += r,
-                        this.spawnStar(z.SROCKET))),
+                        this.spawnStar(le.SROCKET))),
                         this._elapsedTime > this._maxTTimeSpawn || this.scene.time.addEvent({
                             delay: this._maxSpawnDelay,
                             callback: ()=>{
@@ -9415,26 +9470,36 @@
                         })
                     }
                 }
+                setGameConfig() {
+                    const e = this.scene.registry.has("difficultySetting") ? this.scene.registry.get("difficultySetting") : 0
+                      , t = this.scene.registry.get("isIntroductory")
+                      , s = this.scene.registry.get("maxRocket")
+                      , r = this.scene.registry.get("planetPoints");
+                    t ? (this._planetPoints = 8,
+                    this._maxRockets = 2) : 0 === e ? this._planetPoints = 4 : 1 === e && (this._planetPoints = null != r ? r : 6,
+                    this._maxRockets = null != s ? s : 4),
+                    this._pointscore = this._pointstart,
+                    this._inputscore = this.scene.registry.has("scoreInput") ? this.scene.registry.get("scoreInput") : 100
+                }
                 awake() {
                     if (this.scene.game.events.emit("started_game", {
                         playerData: {
                             score: this._pointscore * this._multiplier
                         }
                     }),
-                    this._pointscore = this._pointstart,
-                    this._inputscore = this.scene.registry.has("scoreInput") ? this.scene.registry.get("scoreInput") : 100,
+                    this.setGameConfig(),
                     this.scene.events.emit("update-points", Math.floor(this._pointscore)),
                     this.scene.input.on("pointerdown", (e=>{
                         this.isPaused() || this._gameOver || (this._consecutivePositiveHits = 0,
                         this.updateMultiplier(),
-                        A.Swipe_01.play(),
+                        N.Swipe_01.play(),
                         this.scene.game.events.emit("swipe_event", {
                             location: {
                                 latitude: e.worldX,
                                 longitude: e.worldY
                             },
                             data: {
-                                type: z.NOBJECT
+                                type: le.NOBJECT
                             }
                         }))
                     }
@@ -9447,12 +9512,12 @@
                                 longitude: e.worldY
                             },
                             data: {
-                                type: z.NOBJECT
+                                type: le.NOBJECT
                             }
                         })),
                         this._consecutivePositiveHits = 0,
                         this.updateMultiplier(),
-                        A.Swipe_02.play())
+                        N.Swipe_02.play())
                     }
                     )),
                     this.scene.input.on("pointermove", (e=>{
@@ -9478,11 +9543,13 @@
                                         score: Math.max(Math.floor(this._pointscore * this._multiplier), 1),
                                         multiplier: this._pointscore * this._multiplier / this._inputscore,
                                         slicePercentage: this._numberSliced / this.totalSpawn,
-                                        playerPoints: this._playerPoints
+                                        playerPoints: this._playerPoints,
+                                        sliceCount: this._numberSliced,
+                                        totalSpawned: this._currentSpawned
                                     });
                                     for (const e of this.aspines)
                                         e.state.clearTracks();
-                                    setTimeout((()=>this.showGameOverMessage()), this._playerPoints > 0 ? 2e3 : 3750)
+                                    setTimeout((()=>this.showGameOverMessage()), this.getGameOverMessageDelay())
                                 }
                             }
                         })
@@ -9504,42 +9571,47 @@
                                 score: Math.floor(this._pointscore * this._multiplier),
                                 multiplier: this._pointscore * this._multiplier / this._inputscore,
                                 slicePercentage: this._numberSliced / this.totalSpawn,
-                                playerPoints: this._playerPoints
+                                playerPoints: this._playerPoints,
+                                sliceCount: this._numberSliced,
+                                totalSpawned: this._currentSpawned,
+                                lossReason: this._planetPoints > 0 ? k.BOMB_SLICED : k.METEOR_IMPACT
                             });
                             for (const e of this.aspines)
                                 e.state.clearTracks();
-                            setTimeout((()=>this.showGameOverMessage()), this._playerPoints > 0 ? 2e3 : 3750)
+                            setTimeout((()=>this.showGameOverMessage()), this.getGameOverMessageDelay())
                         }
                 }
                 showGameOverMessage() {
-                    var e;
-                    const t = null !== (e = this.scene.registry.get("resultOnNative")) && void 0 !== e && e;
                     console.log(`🚀 ~ score over: ${this._pointscore}, ${this._numberSliced}, ${this._playerPoints}, ${this._planetPoints}`),
-                    A.musicSound.stop(),
-                    this.playAudio(!this._gameOver, t),
+                    N.musicSound.stop(),
+                    this.playAudio(!this._gameOver, !0),
                     this._multiplier > this._maxMultiplier && (this._multiplier = this._maxMultiplier),
                     !this._gameOver && this._pointscore < 1 && (this._pointscore = 1);
-                    const s = new Y(this.scene);
-                    s.setScore(Math.floor(this._pointscore), this._planetPoints, this._multiplier),
-                    s.setDepth(1),
-                    this.scene.add.existing(s),
+                    const e = new ne(this.scene);
+                    e.setScore(Math.floor(this._pointscore), this._planetPoints, this._multiplier),
+                    e.setDepth(1),
+                    this.scene.add.existing(e),
                     this.scene.registry.set("score", this._pointscore * this._multiplier),
                     this.scene.events.emit("scene-awake")
                 }
+                getGameOverMessageDelay() {
+                    var e;
+                    return this._playerPoints ? 2e3 : null !== (e = this.scene.registry.get("isRetriable")) && void 0 !== e && e ? 2250 : 3750
+                }
                 playAudio(e, t) {
-                    t || (e ? A.Win.play() : A.Lose.play())
+                    t || (e ? N.Win.play() : N.Lose.play())
                 }
                 showGameWonMessage() {
-                    const e = new Z(this.scene);
+                    const e = new ie(this.scene);
                     this.scene.add.existing(e),
                     this.scene.events.emit("scene-awake")
                 }
                 updateMultiplier() {}
                 get stars() {
-                    return this.scene.children.list.filter((e=>e instanceof q))
+                    return this.scene.children.list.filter((e=>e instanceof X))
                 }
                 get aspines() {
-                    return this.scene.children.list.filter((e=>e instanceof B))
+                    return this.scene.children.list.filter((e=>e instanceof Y))
                 }
                 get spines() {
                     return this.scene.children.list.filter((e=>e instanceof SpinePlugin.SpineGameObject))
@@ -9552,39 +9624,39 @@
                         switch (e.disableInteractive(),
                         e.off("pointerover"),
                         e.body && this.scene.physics.world.disableBody(e.body),
-                        e instanceof B && (e.visible = !1,
+                        e instanceof Y && (e.visible = !1,
                         e.state.clearTracks()),
                         t) {
-                        case z.BMETEOR:
+                        case le.BMETEOR:
                             this._numberSliced++,
                             this._pointscore += this.calculateAdditionScore(),
                             this._consecutivePositiveHits++,
                             this.updateMultiplier(),
                             this.spawnParticle(e.x, e.y, "bmeteor0_fx"),
-                            A.NormalMeteor_Slice02.play();
+                            N.NormalMeteor_Slice02.play();
                             break;
-                        case z.SMETEOR:
+                        case le.SMETEOR:
                             this._numberSliced++,
                             this._pointscore += this.calculateAdditionScore() * this._meteorMultipier,
                             this._consecutivePositiveHits++,
                             this.updateMultiplier(),
                             this.spawnParticle(e.x, e.y, "Meteor01_fx"),
-                            A.NormalMeteor_Slice01.play();
+                            N.NormalMeteor_Slice01.play();
                             break;
-                        case z.SROCKET:
+                        case le.SROCKET:
                             this._playerPoints--,
                             this.spawnExplode(e.x, e.y),
                             this.cameraShake(),
-                            A.Rocket_Slice.play(),
+                            N.Rocket_Slice.play(),
                             this.scene.game.events.emit("vibrate_event", {
-                                feedbackType: d.IMPACT,
+                                feedbackType: x.IMPACT,
                                 props: {
-                                    intensity: h.HIGH_IMPACT
+                                    intensity: w.HIGH_IMPACT
                                 }
                             });
                             break;
-                        case z.TBONUS1X:
-                        case z.TBONUS2X:
+                        case le.TBONUS1X:
+                        case le.TBONUS2X:
                             this._particles_flares.setEmitterFrame({
                                 frames: ["green"]
                             }),
@@ -9593,7 +9665,7 @@
                             this._particles_flares.start(0, 100),
                             this._numberSliced++,
                             this._pointscore += this.calculateAdditionScore() * this._meteorMultipier,
-                            A.Swipe_Bonus.play()
+                            N.Swipe_Bonus.play()
                         }
                         this.scene.game.events.emit("swipe_event", {
                             location: {
@@ -9605,7 +9677,7 @@
                             }
                         }),
                         console.log(`🚀 ~ score pointer base: ${this._pointscore}, ${this._numberSliced}, ${this._numberSliced / this.totalSpawn}`),
-                        t === z.SROCKET ? e.visible = !0 : e.animatePickStar((()=>{
+                        t === le.SROCKET ? e.visible = !0 : e.animatePickStar((()=>{
                             this.killStar(e)
                         }
                         )),
@@ -9636,26 +9708,27 @@
                         t += .01,
                         s += .01)
                     }
-                    return new J(e,t,s)
+                    return new oe(e,t,s)
                 }
                 spawnStar(e) {
                     var t;
                     if (this._gameOver)
                         return;
+                    e != le.SROCKET && this._currentSpawned++;
                     const s = this.scene;
                     var {texture: r} = n().Utils.Array.GetRandom(this._info[e].textures.children);
                     if (this._info[e].isSpine) {
-                        var i = new B(this.scene,0,0,r.key);
+                        var i = new Y(this.scene,0,0,r.key);
                         this.scene.sys.displayList.add(i),
                         this.scene.sys.updateList.add(i),
                         i.play("animation", !0),
                         i.setScale(this._info[e].scale);
                         var a = i
                     } else
-                        (a = new q(s,0,0,r.key,r.frame)).setScale(this._info[e].scale);
+                        (a = new X(s,0,0,r.key,r.frame)).setScale(this._info[e].scale);
                     var o = this._initialSize
                       , l = this._initialFallSpeed;
-                    e == z.SROCKET && (o = this._initialRocketSize,
+                    e == le.SROCKET && (o = this._initialRocketSize,
                     l = this._initialRocketFallSpeed);
                     var c = a.displayWidth / 2 + 0
                       , u = s.scale.width - a.displayWidth / 2 - 0;
@@ -9695,7 +9768,7 @@
                         return;
                     const s = this.scene
                       , {texture: r} = n().Utils.Array.GetRandom(this.dpatchs.children)
-                      , i = new G(s,0,0,r.key,r.frame);
+                      , i = new Z(s,0,0,r.key,r.frame);
                     i.setPosition(e, this.scene.scale.height - i.displayHeight / 2 * this._planetPoints),
                     i.setScale(2),
                     i.setRotation(n().Math.DegToRad(0)),
@@ -9761,11 +9834,15 @@
                             1 === t && setTimeout((()=>{
                                 this.scene.cameras.main.fadeIn(250, 255, 255, 255)
                             }
-                            ), 2750)
+                            ), this.explodeScreenFadeOutDurationInMs())
                         }
                         ))
                     }
                     ), 1e3)
+                }
+                explodeScreenFadeOutDurationInMs() {
+                    var e;
+                    return null !== (e = this.scene.registry.get("isRetriable")) && void 0 !== e && e ? 1250 : 2750
                 }
                 nullSwipeImpactPlanet() {
                     this._gameOver
@@ -9783,30 +9860,30 @@
                     this._planetPoints--,
                     this.planet.getAnimationList().includes("Crack_0" + this._planetPoints) && this.planet.state.setAnimation(this._maxPlanetPoints - this._planetPoints, "Crack_0" + this._planetPoints, !0),
                     this.linearShake(this.planet),
-                    A.Planet_Hit.play(),
+                    N.Planet_Hit.play(),
                     this.scene.game.events.emit("vibrate_event", {
-                        feedbackType: d.IMPACT,
+                        feedbackType: x.IMPACT,
                         props: {
-                            intensity: h.MEDIUM_IMPACT
+                            intensity: w.MEDIUM_IMPACT
                         }
                     })
                 }
             }
-            class ee extends a {
+            class ue extends a {
                 constructor(e) {
                     super(e)
                 }
             }
-            class te extends n().Scene {
+            class he extends n().Scene {
                 constructor() {
                     super("Level"),
                     this.id = 0
                 }
                 editorCreate() {
-                    const e = new L(this);
+                    const e = new K(this);
                     this.add.existing(e),
                     e.name = "uiLayer";
-                    const t = new F(this,360,1860,1500,1500);
+                    const t = new V(this,360,1860,1500,1500);
                     this.add.existing(t),
                     t.name = "earth-grow",
                     t.scaleX = 1,
@@ -9817,7 +9894,7 @@
                     t.body.setCircle(749.55),
                     t.fillColor = 12295889,
                     t.fillAlpha = .15;
-                    const s = new F(this,360,1860,1330,1330);
+                    const s = new V(this,360,1860,1330,1330);
                     this.add.existing(s),
                     s.name = "earth-collision",
                     s.scaleX = 1,
@@ -9826,14 +9903,14 @@
                     s.visible = !1,
                     s.body.setOffset(0, 0),
                     s.body.setCircle(665),
-                    new D(this);
-                    const r = new Q(this)
-                      , n = new ee(r.bmeteors)
-                      , i = new ee(r.srockets)
-                      , a = new ee(r.smeteors)
-                      , o = new ee(r.dpatchs)
-                      , l = new ee(r.tbonus2x)
-                      , c = new ee(r.tbonus1x);
+                    new U(this);
+                    const r = new ce(this)
+                      , n = new ue(r.bmeteors)
+                      , i = new ue(r.srockets)
+                      , a = new ue(r.smeteors)
+                      , o = new ue(r.dpatchs)
+                      , l = new ue(r.tbonus2x)
+                      , c = new ue(r.tbonus1x);
                     n.texture = {
                         key: "bmeteor0"
                     },
@@ -9861,9 +9938,9 @@
                 }
             }
             s(442);
-            var se = s(933)
-              , re = s.n(se);
-            class ne extends Phaser.Loader.File {
+            var de = s(933)
+              , fe = s.n(de);
+            class pe extends Phaser.Loader.File {
                 constructor(e, t, s) {
                     super(e, {
                         type: "webfont",
@@ -9878,10 +9955,10 @@
                     },
                     e.active = ()=>this.loader.nextFile(this, !0),
                     e.inactive = ()=>this.loader.nextFile(this, !1),
-                    re().load(e)
+                    fe().load(e)
                 }
             }
-            class ie extends n().Scene {
+            class me extends n().Scene {
                 constructor() {
                     super("Boot")
                 }
@@ -9890,7 +9967,7 @@
                     console.log("Boot init", e)
                 }
                 editorCreate() {
-                    new S(this).typeEmitter = "game.events",
+                    new C(this).typeEmitter = "game.events",
                     this.events.emit("scene-awake")
                 }
                 preload() {
@@ -9910,9 +9987,9 @@
                     })
                 }
             }
-            function ae(e) {
+            function ge(e) {
                 n().Loader.LoaderPlugin.prototype.webfont = function(e, t) {
-                    this.addFile(new ne(this,e,t))
+                    this.addFile(new pe(this,e,t))
                 }
                 ,
                 new (n().Game)({
@@ -9933,7 +10010,7 @@
                             }
                         }
                     },
-                    scene: [ie, R, P, te],
+                    scene: [me, P, H, he],
                     plugins: {
                         scene: [{
                             key: "SpinePlugin",
@@ -10117,10 +10194,10 @@
                     }
                     return t.join(",")
                 }
-                function $(e) {
+                function k(e) {
                     return e.a + e.f
                 }
-                function k(e) {
+                function $(e) {
                     var t = "normal";
                     return "o" === e.a ? t = "oblique" : "i" === e.a && (t = "italic"),
                     t
@@ -10152,23 +10229,23 @@
                     j(e, "inactive")
                 }
                 function j(e, t, s) {
-                    e.j && e.h[t] && (s ? e.h[t](s.c, $(s)) : e.h[t]())
+                    e.j && e.h[t] && (s ? e.h[t](s.c, k(s)) : e.h[t]())
                 }
                 function E() {
                     this.c = {}
                 }
-                function T(e, t) {
+                function M(e, t) {
                     this.c = e,
                     this.f = t,
                     this.a = u(this.c, "span", {
                         "aria-hidden": "true"
                     }, this.f)
                 }
-                function M(e) {
+                function C(e) {
                     h(e.c, "body", e.a)
                 }
-                function C(e) {
-                    return "display:block;position:absolute;top:-9999px;left:-9999px;font-size:300px;width:auto;height:auto;line-height:normal;margin:0;padding:0;font-variant:normal;white-space:nowrap;font-family:" + S(e.c) + ";font-style:" + k(e) + ";font-weight:" + e.f + "00;"
+                function T(e) {
+                    return "display:block;position:absolute;top:-9999px;left:-9999px;font-size:300px;width:auto;height:auto;line-height:normal;margin:0;padding:0;font-variant:normal;white-space:nowrap;font-family:" + S(e.c) + ";font-style:" + $(e) + ";font-weight:" + e.f + "00;"
                 }
                 function I(e, t, s, r, n, i) {
                     this.g = e,
@@ -10188,22 +10265,22 @@
                     this.w = n || 3e3,
                     this.u = i || null,
                     this.m = this.j = this.h = this.g = null,
-                    this.g = new T(this.c,this.s),
-                    this.h = new T(this.c,this.s),
-                    this.j = new T(this.c,this.s),
-                    this.m = new T(this.c,this.s),
-                    e = C(e = new x(this.a.c + ",serif",$(this.a))),
+                    this.g = new M(this.c,this.s),
+                    this.h = new M(this.c,this.s),
+                    this.j = new M(this.c,this.s),
+                    this.m = new M(this.c,this.s),
+                    e = T(e = new x(this.a.c + ",serif",k(this.a))),
                     this.g.a.style.cssText = e,
-                    e = C(e = new x(this.a.c + ",sans-serif",$(this.a))),
+                    e = T(e = new x(this.a.c + ",sans-serif",k(this.a))),
                     this.h.a.style.cssText = e,
-                    e = C(e = new x("serif",$(this.a))),
+                    e = T(e = new x("serif",k(this.a))),
                     this.j.a.style.cssText = e,
-                    e = C(e = new x("sans-serif",$(this.a))),
+                    e = T(e = new x("sans-serif",k(this.a))),
                     this.m.a.style.cssText = e,
-                    M(this.g),
-                    M(this.h),
-                    M(this.j),
-                    M(this.m)
+                    C(this.g),
+                    C(this.h),
+                    C(this.j),
+                    C(this.m)
                 }
                 w.prototype.c = function(e) {
                     for (var t = [], s = 0; s < arguments.length; s++)
@@ -10218,7 +10295,7 @@
                       , r = new Promise((function(r, n) {
                         !function i() {
                             o() - s >= t.f ? n() : e.fonts.load(function(e) {
-                                return k(e) + " " + e.f + "00 300px " + S(e.c)
+                                return $(e) + " " + e.f + "00 300px " + S(e.c)
                             }(t.a), t.h).then((function(e) {
                                 1 <= e.length ? r() : setTimeout(i, 25)
                             }
@@ -10266,14 +10343,14 @@
                 function q(e) {
                     var t, s = e.g.a.offsetWidth, r = e.h.a.offsetWidth;
                     (t = s === e.f.serif && r === e.f["sans-serif"]) || (t = L() && F(e, s, r)),
-                    t ? o() - e.A >= e.w ? L() && F(e, s, r) && (null === e.u || e.u.hasOwnProperty(e.a.c)) ? z(e, e.v) : z(e, e.B) : function(e) {
+                    t ? o() - e.A >= e.w ? L() && F(e, s, r) && (null === e.u || e.u.hasOwnProperty(e.a.c)) ? B(e, e.v) : B(e, e.B) : function(e) {
                         setTimeout(a((function() {
                             q(this)
                         }
                         ), e), 50)
-                    }(e) : z(e, e.v)
+                    }(e) : B(e, e.v)
                 }
-                function z(e, t) {
+                function B(e, t) {
                     setTimeout(a((function() {
                         d(this.g.a),
                         d(this.h.a),
@@ -10283,7 +10360,7 @@
                     }
                     ), e), 0)
                 }
-                function B(e, t, s) {
+                function G(e, t, s) {
                     this.c = e,
                     this.a = t,
                     this.f = 0,
@@ -10297,12 +10374,12 @@
                     q(this)
                 }
                 ;
-                var G = null;
-                function H(e) {
+                var z = null;
+                function U(e) {
                     0 == --e.f && e.j && (e.m ? ((e = e.a).g && f(e.f, [e.a.c("wf", "active")], [e.a.c("wf", "loading"), e.a.c("wf", "inactive")]),
                     j(e, "active")) : A(e.a))
                 }
-                function U(e) {
+                function H(e) {
                     this.j = e,
                     this.a = new E,
                     this.h = 0,
@@ -10324,17 +10401,17 @@
                                   , h = o[u.c]
                                   , d = t.a
                                   , p = u;
-                                if (d.g && f(d.f, [d.a.c("wf", p.c, $(p).toString(), "loading")]),
+                                if (d.g && f(d.f, [d.a.c("wf", p.c, k(p).toString(), "loading")]),
                                 j(d, "fontloading", p),
                                 d = null,
-                                null === G)
+                                null === z)
                                     if (window.FontFace) {
                                         p = /Gecko.*Firefox\/(\d+)/.exec(window.navigator.userAgent);
                                         var m = /OS X.*Version\/10\..*Safari/.exec(window.navigator.userAgent) && /Apple/.exec(window.navigator.vendor);
-                                        G = p ? 42 < parseInt(p[1], 10) : !m
+                                        z = p ? 42 < parseInt(p[1], 10) : !m
                                     } else
-                                        G = !1;
-                                d = G ? new I(a(t.g, t),a(t.h, t),t.c,u,t.s,h) : new D(a(t.g, t),a(t.h, t),t.c,u,t.s,e,h),
+                                        z = !1;
+                                d = z ? new I(a(t.g, t),a(t.h, t),t.c,u,t.s,h) : new D(a(t.g, t),a(t.h, t),t.c,u,t.s,e,h),
                                 c.push(d)
                             }
                             for (l = 0; l < c.length; l++)
@@ -10343,11 +10420,11 @@
                     }
                     ), 0)
                 }
-                function V(e, t) {
+                function K(e, t) {
                     this.c = e,
                     this.a = t
                 }
-                function K(e, t) {
+                function V(e, t) {
                     this.c = e,
                     this.a = t
                 }
@@ -10357,28 +10434,28 @@
                     this.f = [],
                     this.g = t || ""
                 }
-                B.prototype.g = function(e) {
+                G.prototype.g = function(e) {
                     var t = this.a;
-                    t.g && f(t.f, [t.a.c("wf", e.c, $(e).toString(), "active")], [t.a.c("wf", e.c, $(e).toString(), "loading"), t.a.c("wf", e.c, $(e).toString(), "inactive")]),
+                    t.g && f(t.f, [t.a.c("wf", e.c, k(e).toString(), "active")], [t.a.c("wf", e.c, k(e).toString(), "loading"), t.a.c("wf", e.c, k(e).toString(), "inactive")]),
                     j(t, "fontactive", e),
                     this.m = !0,
-                    H(this)
+                    U(this)
                 }
                 ,
-                B.prototype.h = function(e) {
+                G.prototype.h = function(e) {
                     var t = this.a;
                     if (t.g) {
-                        var s = p(t.f, t.a.c("wf", e.c, $(e).toString(), "active"))
+                        var s = p(t.f, t.a.c("wf", e.c, k(e).toString(), "active"))
                           , r = []
-                          , n = [t.a.c("wf", e.c, $(e).toString(), "loading")];
-                        s || r.push(t.a.c("wf", e.c, $(e).toString(), "inactive")),
+                          , n = [t.a.c("wf", e.c, k(e).toString(), "loading")];
+                        s || r.push(t.a.c("wf", e.c, k(e).toString(), "inactive")),
                         f(t.f, r, n)
                     }
                     j(t, "fontinactive", e),
-                    H(this)
+                    U(this)
                 }
                 ,
-                U.prototype.load = function(e) {
+                H.prototype.load = function(e) {
                     this.c = new l(this.j,e.context || this.j),
                     this.g = !1 !== e.events,
                     this.f = !1 !== e.classes,
@@ -10398,7 +10475,7 @@
                                 }
                             return n
                         }(e.a, s, e.c);
-                        var i = new B(e.c,t,n);
+                        var i = new G(e.c,t,n);
                         for (e.h = r.length,
                         t = 0,
                         s = r.length; t < s; t++)
@@ -10409,7 +10486,7 @@
                     }(this, new R(this.c,e), e)
                 }
                 ,
-                V.prototype.load = function(e) {
+                K.prototype.load = function(e) {
                     function t() {
                         if (i["__mti_fntLst" + r]) {
                             var s, n = i["__mti_fntLst" + r](), a = [];
@@ -10443,7 +10520,7 @@
                         e([])
                 }
                 ,
-                K.prototype.load = function(e) {
+                V.prototype.load = function(e) {
                     var t, s, r = this.a.urls || [], n = this.a.families || [], i = this.a.testStrings || {}, a = new y;
                     for (t = 0,
                     s = r.length; t < s; t++)
@@ -10639,9 +10716,9 @@
                     ))) : e([])
                 }
                 ;
-                var ae = new U(window);
+                var ae = new H(window);
                 ae.a.c.custom = function(e, t) {
-                    return new K(t,e)
+                    return new V(t,e)
                 }
                 ,
                 ae.a.c.fontdeck = function(e, t) {
@@ -10649,7 +10726,7 @@
                 }
                 ,
                 ae.a.c.monotype = function(e, t) {
-                    return new V(t,e)
+                    return new K(t,e)
                 }
                 ,
                 ae.a.c.typekit = function(e, t) {
@@ -10748,7 +10825,7 @@
     ,
     i.hu = e=>e + "." + i.h() + ".hot-update.js",
     i.hmrF = ()=>"main." + i.h() + ".hot-update.json",
-    i.h = ()=>"3182fed8e8e521fc59d8",
+    i.h = ()=>"b7902343287fe58307a0",
     i.g = function() {
         if ("object" == typeof globalThis)
             return globalThis;
@@ -11252,11 +11329,11 @@
             s = void 0;
             for (var _, w = [], x = 0; x < u.length; x++) {
                 var S = u[x]
-                  , $ = i.c[S];
-                $ && ($.hot._selfAccepted || $.hot._main) && h[S] !== d && !$.hot._selfInvalidated && w.push({
+                  , k = i.c[S];
+                k && (k.hot._selfAccepted || k.hot._main) && h[S] !== d && !k.hot._selfInvalidated && w.push({
                     module: S,
-                    require: $.hot._requireSelf,
-                    errorHandler: $.hot._selfAccepted
+                    require: k.hot._requireSelf,
+                    errorHandler: k.hot._selfAccepted
                 })
             }
             return {
@@ -11454,7 +11531,7 @@
     }
     )(),
     i.nc = void 0;
-    var a = i.O(void 0, [426], (()=>i(866)));
+    var a = i.O(void 0, [426], (()=>i(144)));
     a = i.O(a)
 }
 )();
