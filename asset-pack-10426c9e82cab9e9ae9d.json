@@ -1,0 +1,174 @@
+{
+    "section1": {
+        "files": [
+            {
+                "url": "https://res.cloudinary.com/slice-prod/image/upload/fire/assets/images/slice/backgrounds/bg0.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "bg0"
+            },
+            {
+                "url": ["https://res.cloudinary.com/slice-prod/video/upload/fire/assets/audios/BGMusic_05.mp3"],
+                "type": "audio",
+                "key": "BGMusic_05"
+            },
+            {
+                "url": ["https://res.cloudinary.com/slice-prod/video/upload/fire/assets/audios/BGMusic_07.mp3"],
+                "type": "audio",
+                "key": "BGMusic_07"
+            },
+            {
+                "url": "https://res.cloudinary.com/slice-prod/image/upload/fire/assets/images/slice/stars/coin.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "coin"
+            },
+            {
+                "url": "https://res.cloudinary.com/slice-prod/image/upload/fire/assets/images/slice/button/continue.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "continue"
+            },
+            {
+                "atlasURL": "https://res.cloudinary.com/slice-prod/raw/upload/fire/assets/atlas/flares.json",
+                "textureURL": "https://res.cloudinary.com/slice-prod/raw/upload/fire/assets/atlas/flares.png",
+                "type": "atlas",
+                "key": "flares"
+            },
+            {
+                "url": ["https://res.cloudinary.com/slice-prod/video/upload/fire/assets/audios/Lose.mp3"],
+                "type": "audio",
+                "key": "Lose"
+            },
+            {
+                "url": ["https://res.cloudinary.com/slice-prod/video/upload/fire/assets/audios/NormalMeteor_Slice01.mp3"],
+                "type": "audio",
+                "key": "NormalMeteor_Slice01"
+            },
+            {
+                "url": ["https://res.cloudinary.com/slice-prod/video/upload/fire/assets/audios/NormalMeteor_Slice02.mp3"],
+                "type": "audio",
+                "key": "NormalMeteor_Slice02"
+            },
+            {
+                "url": ["https://res.cloudinary.com/slice-prod/video/upload/fire/assets/audios/Planet_Hit.mp3"],
+                "type": "audio",
+                "key": "Planet_Hit"
+            },
+            {
+                "url": "https://res.cloudinary.com/slice-prod/image/upload/fire/assets/images/slice/button/playnext.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "playnext"
+            },
+            {
+                "url": ["https://res.cloudinary.com/slice-prod/video/upload/fire/assets/audios/Rocket_Slice.mp3"],
+                "type": "audio",
+                "key": "Rocket_Slice"
+            },
+            {
+                "url": "https://res.cloudinary.com/slice-prod/raw/upload/fire/assets/images/spine/backgrounds/StartScreen/SlicetoBegin.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "SlicetoBegin"
+            },
+            {
+                "url": "https://res.cloudinary.com/slice-prod/image/upload/fire/assets/images/slice/stars/star1.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "star1"
+            },
+            {
+                "url": "https://res.cloudinary.com/slice-prod/image/upload/fire/assets/images/slice/stars/star2.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "star2"
+            },
+            {
+                "url": "https://res.cloudinary.com/slice-prod/raw/upload/fire/assets/images/spine/backgrounds/StartBG/StartBG.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "StartBG"
+            },
+            {
+                "url": ["https://res.cloudinary.com/slice-prod/video/upload/fire/assets/audios/Swipe_01.mp3"],
+                "type": "audio",
+                "key": "Swipe_01"
+            },
+            {
+                "url": ["https://res.cloudinary.com/slice-prod/video/upload/fire/assets/audios/Swipe_02.mp3"],
+                "type": "audio",
+                "key": "Swipe_02"
+            },
+            {
+                "url": ["https://res.cloudinary.com/slice-prod/video/upload/fire/assets/audios/Swipe_Bonus.mp3"],
+                "type": "audio",
+                "key": "Swipe_Bonus"
+            },
+            {
+                "url": ["https://res.cloudinary.com/slice-prod/video/upload/fire/assets/audios/Win.mp3"],
+                "type": "audio",
+                "key": "Win"
+            },
+            {
+                "url": "https://res.cloudinary.com/slice-prod/image/upload/fire/assets/images/slice/button/x.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "x"
+            },
+            {
+                "url": "https://res.cloudinary.com/slice-prod/image/upload/fire/assets/images/slice/button/share.svg",
+                "svgConfig": {
+                    "width": 0,
+                    "height": 0,
+                    "scale": 0
+                },
+                "type": "svg",
+                "key": "share"
+            }
+        ]
+    },
+    "meta": {
+        "app": "Phaser Editor 2D - Asset Pack Editor",
+        "contentType": "phasereditor2d.pack.core.AssetContentType",
+        "url": "https://phasereditor2d.com",
+        "version": 2,
+        "showAllFilesInBlocks": false
+    }
+}
